@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <title>iView</title>
+    <link rel="stylesheet" href="../assets/css/iview.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="title" v-show="status === 'options'">iView - 新建工程</div>
+        <div class="title" v-show="status === 'log' && titleStatus === 1">
+            iView - 创建中
+            <Icon type="load-c" class="ivu-load-loop"></Icon>
+        </div>
+        <div class="title" v-show="status === 'log' && titleStatus === 2">
+            iView - 创建完成
+            <Icon type="ios-checkmark-outline" color="#00cc66"></Icon>
+        </div>
+        <div class="title" v-show="status === 'log' && titleStatus === 3">
+            iView - 创建失败
+            <Icon type="ios-close-outline"  color="#ff5500"></Icon>
+        </div>
+        <div class="title" v-show="status === 'next'">iView - 进一步配置</div>
+        <div class="create-app">
+            <div class="create-form" v-show="status === 'options'">
+                <i-form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="120">
+                    <Form-item label="iView 版本：" prop="iviewVersion">
+                        <Radio-group v-model="formValidate.iviewVersion">
+                            <Radio label="2.x">2.0.0-rc.13</Radio>
+                        </Radio-group>
+
+                        <!-- @TODO 这里需要改 添加elementUI ？ -->
+                    </Form-item>
+
+                    <!-- TODO: 添加 导航 -->
+                    <Form-item label="是否需要导航：">
+                            <i-switch v-model="formValidate.navNeed" ></i-switch>
+                    </Form-item>
+                    <Form-item label="填写你的导航树：" v-if="formValidate.navNeed">
+                        <Input v-model="formValidate.nav" type="textarea" :autosize="true"></Input>
+                        <textarea :value="formValidate.nav"></textarea>
+                    </Form-item>
+                    <!-- TODO: 添加 登录 -->
+
+                    <Form-item label="CSS 预处理：" prop="css">
+                        <Checkbox-group v-model="formValidate.css">
+                            <Checkbox label="less"></Checkbox>
+                            <Checkbox label="sass"></Checkbox>
+                        </Checkbox-group>
+                    </Form-item>
+                    <Form-item label="Ajax：" prop="ajax">
+                        <div slot="label">
+                            <span>Ajax</span>
+                            <Tooltip content="基于 axios">
+                                <Icon type="ios-help" size="14" color="#3399ff"></Icon>
+                            </Tooltip>
+                            <span>：</span>
+                        </div>
+                        <i-switch v-model="formValidate.ajax">
+                            <Icon type="android-done" slot="open"></Icon>
+                            <Icon type="android-close" slot="close"></Icon>
+                        </i-switch>
+                    </Form-item>
+                    <Form-item label="多语言：" prop="i18n">
+                        <div slot="label">
+                            <span>多语言</span>
+                            <Tooltip content="基于 vue-i18n">
+                                <Icon type="ios-help" size="14" color="#3399ff"></Icon>
+                            </Tooltip>
+                            <span>：</span>
+                        </div>
+                        <i-switch v-model="formValidate.i18n">
+                            <Icon type="android-done" slot="open"></Icon>
+                            <Icon type="android-close" slot="close"></Icon>
+                        </i-switch>
+                    </Form-item>
+                    <Form-item label="状态管理：" prop="store">
+                        <Checkbox-group v-model="formValidate.store">
+                            <Checkbox label="vuex"></Checkbox>
+                            <Checkbox label="bus.js"></Checkbox>
+                        </Checkbox-group>
+                    </Form-item>
+                    <Form-item label="图表：" prop="chart">
+                        <Checkbox-group v-model="formValidate.chart">
+                            <Checkbox label="echarts"></Checkbox>
+                        </Checkbox-group>
+                    </Form-item>
+                    <Form-item label="ESLint：" prop="eslint">
+                        <i-switch v-model="formValidate.eslint">
+                            <Icon type="android-done" slot="open"></Icon>
+                            <Icon type="android-close" slot="close"></Icon>
+                        </i-switch>
+                    </Form-item>
+                    <Form-item label="附加功能：" prop="funs">
+                        <Checkbox-group v-model="formValidate.funs">
+                            <Checkbox label="cookies">Cookie（js-cookie）</Checkbox>
+                            <Checkbox label="clipboard">复制（clipboard）</Checkbox>
+                            <Checkbox label="html2canvas">HTML 转图片（html2canvas）</Checkbox>
+                            <Checkbox label="rasterizehtml">HTML 转图片（rasterizeHTML）</Checkbox>
+                        </Checkbox-group>
+                    </Form-item>
+                    <a href="javascript:void(0)" class="create-app-more" v-if="!showMore" @click="handleShowMore">
+                        <span>显示更多配置</span>
+                        <Icon type="ios-arrow-down"></Icon>
+                    </a>
+                    <div class="create-app-more-item" v-if="showMore">
+                        <Form-item label="项目名称：" prop="name">
+                            <i-input v-model="formValidate.name" placeholder="请输入项目名，必须为英文且不带空格"></i-input>
+                        </Form-item>
+                        <Form-item label="版本号：" prop="version">
+                            <i-input v-model="formValidate.version" placeholder="请输入版本号，例如 1.0.0"></i-input>
+                        </Form-item>
+                        <Form-item label="项目介绍：" prop="desc">
+                            <i-input type="textarea" v-model="formValidate.desc" placeholder="请输入项目介绍..."></i-input>
+                        </Form-item>
+                        <Form-item label="Git 地址：" prop="git">
+                            <i-input v-model="formValidate.git" placeholder="请输入项目所在仓库地址"></i-input>
+                        </Form-item>
+                    </div>
+                </i-form>
+                <Row class="create-app-submit">
+                    <i-col span="9" offset="2">
+                        <i-button type="primary" long @click="handleSubmit('formValidate')">创建工程</i-button>
+                    </i-col>
+                    <i-col span="9" offset="2">
+                        <i-button type="ghost" long @click="handleReset('formValidate')" style="margin-left: 8px">重置</i-button>
+                    </i-col>
+                </Row>
+            </div>
+            <div class="create-info" v-show="status === 'log'">
+                <log :status="log.package" content="创建 package.json"></log>
+                <log :status="log.babel" content="创建 .babelrc"></log>
+                <log :status="log.webpackBase" content="创建 webpack 基础配置文件"></log>
+                <log :status="log.webpackDev" content="创建 webpack 开发环境配置文件"></log>
+                <log :status="log.webpackProd" content="创建 webpack 生产环境配置文件"></log>
+                <log :status="log.vendors" content="创建 vendors.js"></log>
+                <log :status="log.router" content="创建路由配置文件 router.js"></log>
+                <log :status="log.i18n" content="创建多语言配置文件 locale.js" v-if="formValidate.i18n"></log>
+                <log :status="log.app" content="创建路由挂载根组件 app.vue"></log>
+                <log :status="log.template" content="创建首页模板 index.ejs"></log>
+                <log :status="log.indexHtml" content="创建首页 index.html"></log>
+                <log :status="log.indexVue" content="创建首页组件 index.vue"></log>
+                <log :status="log.main" content="创建入口文件 main.js"></log>
+                <log :status="log.config" content="创建配置文件 config.js"></log>
+                <log :status="log.util" content="创建工具集文件 util.js"></log>
+                <!--<log :status="log.vuexStore" content="创建 vuex 文件 store.js" v-if="formValidate.store.indexOf('vuex') > -1"></log>-->
+                <!--<log :status="log.vuexActions" content="创建 vuex 文件 actions.js" v-if="formValidate.store.indexOf('vuex') > -1"></log>-->
+                <!--<log :status="log.vuexMutations" content="创建 vuex 文件 mutations.js" v-if="formValidate.store.indexOf('vuex') > -1"></log>-->
+                <log :status="log.bus" content="创建中央事件总线文件 bus.js" v-if="formValidate.store.indexOf('bus.js') > -1"></log>
+                <log :status="log.eslintRc" content="创建 ESLint 配置文件 .eslintrc.json" v-if="formValidate.eslint"></log>
+                <log :status="log.eslintIgnore" content="创建 ESLint 忽略文件 .eslintignore" v-if="formValidate.eslint"></log>
+                <log :status="log.gitignore" content="创建 .gitignore"></log>
+                <log :status="log.editorconfig" content="创建 .editorconfig"></log>
+
+                <Row class="create-app-submit create-info-submit">
+                    <i-col span="9" offset="2">
+                        <i-button type="success" long @click="handleNext" icon="ios-information" :disabled="titleStatus !== 2">进一步配置</i-button>
+                    </i-col>
+                    <i-col span="9" offset="2">
+                        <i-button type="ghost" long @click="handleOpenDirectory" style="margin-left: 8px" icon="folder">打开目录</i-button>
+                    </i-col>
+                </Row>
+            </div>
+            <div class="create-next" v-show="status === 'next'">
+                <Alert show-icon>
+                    <Icon type="ios-lightbulb-outline" slot="icon"></Icon>
+                    <span slot="desc">
+                        iView Cli 已将所有配置文件保存在指定的<a href="javascript:void(0)" @click="handleOpenDirectory">目录</a>，按照下面的流程可以启动项目。对于一些定制内容，可以进一步配置。
+                    </span>
+                </Alert>
+                <Alert>请预先全局安装 Node.js、npm 、webpack。</Alert>
+                <h4>安装依赖</h4>
+                <code>$ npm install</code>
+                <h4>启动服务（开发环境）</h4>
+                <code>$ npm run dev</code>
+                <p>
+                    服务启动后，打开 <a href="javascript:void(0)" @click="handleOpenLink('http://127.0.0.1:8080')">http://127.0.0.1:8080</a> 访问网站
+                </p>
+                <p></p>
+                <h4>编译打包（生产环境）</h4>
+                <code>$ npm run build</code>
+                <template v-if="formValidate.ajax">
+                    <h4>配置 Ajax</h4>
+                    <p>iView 使用 <strong>axios</strong> 完成 Ajax 请求，并且将其封装在了 <a href="javascript:void(0)" @click="handleOpenFile('src/libs/util.js')">src/libs/util.js</a> 里，点击文件修改具体配置。</p>
+                </template>
+                <h4>修改 html 模板</h4>
+                <p>修改 <a href="javascript:void(0)" @click="handleOpenFile('src/template/index.ejs')">src/template/index.ejs</a> 文件，使用 webpack 重新编译，可以改变入口 html。</p>
+                <template v-if="formValidate.i18n">
+                    <h4>多语言</h4>
+                    <p>iView 已预先将多语言配置写入 <a href="javascript:void(0)" @click="handleOpenFile('src/main.js')">src/main.js</a> 文件，并支持中文和英文，可在 <a href="javascript:void(0)" @click="handleOpenFile('src/locale.js')">src/locale.js</a> 配置。</p>
+                </template>
+                <template v-if="formValidate.eslint">
+                    <h4>ESLint</h4>
+                    <p>使用 ESLint 来检测代码是否符合规范：</p>
+                    <code>$ npm run lint</code>
+                </template>
+                <Row class="create-app-submit create-info-submit">
+                    <i-col span="9" offset="2">
+                        <i-button type="primary" long @click="handleBackHome" icon="ios-home">返回首页</i-button>
+                    </i-col>
+                    <i-col span="9" offset="2">
+                        <i-button type="ghost" long @click="handleOpenDirectory" style="margin-left: 8px" icon="folder">打开目录</i-button>
+                    </i-col>
+                </Row>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <script type="text/javascript" src="../assets/js/iview.min.js"></script>
+    <script type="text/javascript" src="../src/create.js"></script>
+</body>
+</html>

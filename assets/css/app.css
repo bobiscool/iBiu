@@ -1,0 +1,116 @@
+body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+}
+[v-cloak]{
+    display: none;
+}
+.title{
+    height: 20px;
+    text-align: center;
+    -webkit-app-region: drag;
+    padding: 4px 0 0;
+    font-size: 14px;
+}
+.subtitle{
+    padding: 15px;
+    font-size: 14px;
+}
+.home-app{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+.home-row{
+    height: 100%;
+}
+.home-logo, .home-name{
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    background-image: url("../img/iview-logo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.home-name{
+    height: 40px;
+    background-image: url("../img/iview-name.png");
+}
+.home-desc{
+    margin: 20px 0 20px;
+    font-size: 14px;
+}
+.home-menu{
+    margin: 35px 0 150px;
+}
+.home-version{
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.create-app{
+    position: absolute;
+    top: 40px;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    overflow: auto;
+}
+.create-form{
+    margin-right: 15px;
+}
+.create-app .ivu-form-item{
+    margin-bottom: 10px;
+}
+.create-app-more{
+    display: block;
+    margin: 0 auto 16px;
+    text-align: center;
+}
+.create-app-more-item{
+    margin-bottom: 30px;
+}
+.create-app-submit{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.create-info li{
+    list-style: none;
+    margin: 5px 0 0 15px;
+}
+.create-info li i{
+    position: relative;
+    top: 1px;
+}
+.create-info-submit{
+    margin: 15px auto 0;
+}
+
+.create-next{
+    padding: 15px;
+}
+.create-next h4{
+    margin-bottom: 2px;
+}
+.create-next code{
+    display: block;
+    padding: 8px;
+    margin: 10px 0 8px;
+    border-radius: 4px;
+    background: #f7f7f7;
+    color: #525252;
+}
+.create-next p{
+    padding: 2px 8px;
+}
