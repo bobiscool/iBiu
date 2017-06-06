@@ -49,7 +49,7 @@ const app = new Vue({
                  {name:"二级导航1",
                      short:"first",
                      children:[
-                         {name:"一级导航",
+                         {name:"三级导航",
                              short:"first"
                          }
                      ]
@@ -62,7 +62,7 @@ const app = new Vue({
                     {name:"二级导航2",
                         short:"first",
                         children:[
-                            {name:"一级导航",
+                            {name:"三级导航",
                                 short:"first"
                             }
                         ]
@@ -75,7 +75,7 @@ const app = new Vue({
                     {name:"二级导航3",
                         short:"first",
                         children:[
-                            {name:"一级导航",
+                            {name:"三级导航",
                                 short:"first"
                             }
                         ]
