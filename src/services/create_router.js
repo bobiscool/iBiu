@@ -45,7 +45,7 @@ var a =[
         ]
     }
 ];
-
+var layer =0;
 
 
 var b = {
@@ -101,6 +101,13 @@ var b = {
 * 然后 遍历 拿到一级 二级
 * 有点像遍历二叉树 不过这是树结构
 * */
+
+function wrapViews(a) {
+    return {
+        "views":a
+    }
+}
+
 var paths = {}
 function generatePath(Json) {
     if(Json&&Json instanceof Array){
@@ -117,22 +124,27 @@ function getChildren(val) {
     }
 }
 
-var data='aaa'
+var template='aaa'
+
 
 // for(var i in )
 
 function generateDir(data,pre_dir) {
+    layer ++;
     for(var i in data){
         if(data.hasOwnProperty(i)){
             // console.log(i)
            if(!fs.existsSync(pre_dir+'/'+i)){
                if(pre_dir){
                    fs.mkdirSync(pre_dir+'/'+i);
-                   fs.writeFile(`${pre_dir}/${i}/index.vue`,data,function (err) {
+                   fs.writeFile(`${pre_dir}/${i}/index.vue`,template,function (err) {
                    if(err){ console.log('error')}
                    })
                }else {
                    fs.mkdirSync(i);
+                   fs.writeFile(`${i}/index.vue`,data,function (err) {
+                       if(err){ console.log('error')}
+                   })
                }
            }
            if(data[i]!=={}){
@@ -145,6 +157,6 @@ function generateDir(data,pre_dir) {
 // generatePath(a);
 // console.log(paths);
 
-generateDir(b,__dirname);
+generateDir(wrapViews(b),__dirname);
 
 console.log(__dirname);
