@@ -52,7 +52,10 @@ var b = {
     "一级导航1_short1":{
         "二级导航2_short2":{
             "三级导航2_short2":{
-                "三级导航3_short3":{},
+                "三级导航3_short3":{
+                    "四级导航3_short3":{},
+                    "四级导航4_short4":{}
+                },
                 "三级导航4_short4":{}
             },
             "三级导航3_short3":{},
@@ -114,6 +117,7 @@ function getChildren(val) {
     }
 }
 
+var data='aaa'
 
 // for(var i in )
 
@@ -124,6 +128,9 @@ function generateDir(data,pre_dir) {
            if(!fs.existsSync(pre_dir+'/'+i)){
                if(pre_dir){
                    fs.mkdirSync(pre_dir+'/'+i);
+                   fs.writeFile(`${pre_dir}/${i}/index.vue`,data,function (err) {
+                   if(err){ console.log('error')}
+                   })
                }else {
                    fs.mkdirSync(i);
                }
