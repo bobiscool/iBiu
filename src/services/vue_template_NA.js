@@ -53,36 +53,7 @@ export default const template = [
             return {
                 //todo 这里是data区域
               activeIndex:'1',
-              activeIndex2:'2',
-              LINK:[
-                {
-                  text:"首页",
-                  link:"/home"
-                },
-                {
-                  text:"预警",
-                  link:"/warning"
-                },
-                {
-                  text:"资产",
-                  link:"/assets"
-                },
-                {
-                  text:"策略",
-                  link:"/strategy"
-                },
-                {
-                  text:"设置",
-                  link:"/config"
-                }
-              ],
-              Icon:{
-                  "首页":"&#xe607;",
-                  "预警":"&#xe609;",
-                  "资产":"&#xe66a;",
-                  "策略":"&#xe662;",
-                  "设置":"&#xe606;",
-              }
+              activeIndex2:'2'
             }
         },
         components: {

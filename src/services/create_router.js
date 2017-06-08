@@ -46,6 +46,7 @@ var a =[
     }
 ];
 var layer =0;
+var paths = []
 
 
 var b = {
@@ -108,20 +109,31 @@ function wrapViews(a) {
     }
 }
 
-var paths = {}
-function generatePath(Json) {
-    if(Json&&Json instanceof Array){
-        Json.forEach(function (p1, p2, p3) {
-            paths[p2+'path']=[];
-            paths[p2+'path'].push(p1.name);
-        })
-    }
+// var paths = {}
+// function generatePath(Json) {
+//     if(Json&&Json instanceof Array){
+//         Json.forEach(function (p1, p2, p3) {
+//             paths[p2+'path']=[];
+//             paths[p2+'path'].push(p1.name);
+//         })
+//     }
+// }
+
+function getChildren(a) {
+  return Object.keys(a)
 }
 
-function getChildren(val) {
-    if(val.children&&val.children.length!=0){
+function getDeep(a) {
+    var b = a.match(/views(\/[\u4e00-\u9fa5_a-zA-Z0-9]+)+/g)
 
+    // var b = a.match(/(?<=(views))\/\w+/)
+    if(b&&b[0]) {
+        var c = b[0].split('/');
+        c.shift();
+        return c;
     }
+
+    return [];
 }
 
 var template='aaa'
@@ -130,7 +142,9 @@ var template='aaa'
 // for(var i in )
 
 function generateDir(data,pre_dir) {
-    layer ++;
+    // layer ++;
+    paths.push(pre_dir);
+    console.log(getDeep(pre_dir).length);
     for(var i in data){
         if(data.hasOwnProperty(i)){
             // console.log(i)
@@ -140,6 +154,7 @@ function generateDir(data,pre_dir) {
                    fs.writeFile(`${pre_dir}/${i}/index.vue`,template,function (err) {
                    if(err){ console.log('error')}
                    })
+
                }else {
                    fs.mkdirSync(i);
                    fs.writeFile(`${i}/index.vue`,data,function (err) {
@@ -151,6 +166,7 @@ function generateDir(data,pre_dir) {
                generateDir(data[i],pre_dir+'/'+i);
            }
         }
+        console.log(getChildren(data[i]))
     }
 }
 
@@ -158,5 +174,17 @@ function generateDir(data,pre_dir) {
 // console.log(paths);
 
 generateDir(wrapViews(b),__dirname);
+
+// 下一步 根据路径选择模板
+/*
+*拿到 路径 然后将views 前面的全部过滤
+* / 拆成 数组 然后找到同级路由
+ */
+
+
+
+
+console.log(getDeep('/Users/mac/Downloads/iview-cli-2.0/src/services/views/一级导航1_short1/ss/ss/ssdff/sfdsg/dfg/dfg'));
+// console.log(paths);
 
 console.log(__dirname);
