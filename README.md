@@ -29,3 +29,6 @@ iView-cli is an MIT licensed open source project and completely free to use, but
 <p align="center">
     <img src="https://raw.githubusercontent.com/iview/iview/master/assets/pay.png">
 </p>
+
+
+- JS中不支持(?<=exp)这样子的零宽断言语法!!!!!
