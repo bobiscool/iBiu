@@ -4,6 +4,7 @@
 const writeFile = require('./write-file');
 const fs = require('fs');
 const path = require('path');
+const { template } = require("./vue_template_A.js");
 var a =[
     {name:"一级导航1",
         short:"first",
@@ -49,15 +50,12 @@ var layer =0;
 var paths = []
 
 
+// console.log(template);
 var b = {
     "一级导航1_short1":{
         "二级导航2_short2":{
             "三级导航2_short2":{
-                "三级导航3_short3":{
-                    "四级导航3_short3":{},
-                    "四级导航4_short4":{}
-                },
-                "三级导航4_short4":{}
+
             },
             "三级导航3_short3":{},
             "三级导航4_short4":{}
@@ -120,6 +118,7 @@ function wrapViews(a) {
 // }
 
 function getChildren(a) {
+    // console.log(Object.keys(a));
   return Object.keys(a)
 }
 
@@ -136,7 +135,53 @@ function getDeep(a) {
     return [];
 }
 
-var template='aaa'
+
+function generSrcName(name) {
+    var b = name.match(/views(\/[\u4e00-\u9fa5_a-zA-Z0-9]+)+/g)
+    var c=[];
+    var posiPos='';
+    // var b = a.match(/(?<=(views))\/\w+/)
+    if(b&&b[0]) {
+         c = b[0].split('/');
+        c.shift();
+    }
+
+    if(c.length>0){
+        posiPos=c.join('/')
+    }else {
+        posiPos=''
+    }
+
+    return posiPos;
+}
+
+/*生成template里面的名称 以及src用的*/
+function splitShortAll(names,src) {
+    var temSrc = generSrcName(src);
+    console.log(temSrc);
+    var tem2 = [];
+    for(var i in names) {
+        tem2.push({text:names[i].split('_')[0],src:temSrc+'/'+names[i].split('_')[1]})
+    }
+    return tem2;
+}
+
+
+
+function splitShort(name) {
+
+        return {name:name.split('_')[0],short:name.split('_')[1]}
+
+}
+
+
+/*生成src*/
+function generateSrc() {
+
+}
+
+
+// var template='aaa'
 
 
 // for(var i in )
@@ -144,29 +189,40 @@ var template='aaa'
 function generateDir(data,pre_dir) {
     // layer ++;
     paths.push(pre_dir);
-    console.log(getDeep(pre_dir).length);
+    // console.log(data,pre_dir);
     for(var i in data){
         if(data.hasOwnProperty(i)){
-            // console.log(i)
-           if(!fs.existsSync(pre_dir+'/'+i)){
+            // console.log(template[getDeep(pre_dir).length](getChildren(data[i])));
+            var tem = splitShort(i);
+            if(tem.name=="views"){
+                tem.short = "views";
+            }
+// console.log(tem);
+
+           if(!fs.existsSync(pre_dir+'/'+tem.short)){
                if(pre_dir){
-                   fs.mkdirSync(pre_dir+'/'+i);
-                   fs.writeFile(`${pre_dir}/${i}/index.vue`,template,function (err) {
-                   if(err){ console.log('error')}
+
+                   // console.log(getDeep(pre_dir).length);
+                   fs.mkdirSync(pre_dir+'/'+tem.short);//当前目录
+                   fs.writeFile(`${pre_dir}/${tem.short}/index.vue`,
+                       template[getDeep(pre_dir).length]
+                       (splitShortAll(getChildren(data[i]),pre_dir+'/'+tem.short))
+                       ,function (err) {
+                   if(err){ console.log('error')}//生成文件
                    })
 
                }else {
-                   fs.mkdirSync(i);
-                   fs.writeFile(`${i}/index.vue`,data,function (err) {
+                   fs.mkdirSync(tem.short);
+                   fs.writeFile(`${tem.short}/index.vue`,template[getDeep(pre_dir).length](getChildren(data[i])),function (err) {
                        if(err){ console.log('error')}
                    })
                }
            }
            if(data[i]!=={}){
-               generateDir(data[i],pre_dir+'/'+i);
+               generateDir(data[i],pre_dir+'/'+tem.short);
            }
         }
-        console.log(getChildren(data[i]))
+        // console.log(getChildren(data[i]))
     }
 }
 

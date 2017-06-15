@@ -4,15 +4,16 @@
 
 
 /*现在只写到三级目录 以及导航*/
-export default const template = [
+exports.template = [
 
     function (names) {
         //一级导航
         var temString = "";
         for(var i in names){
-            temString+="<li><router-link to='"+name[i].src+"'>"+name[i].text+"</router-link></li>"
+            temString+="<li><router-link to='"+names[i].src+"'>"+names[i].text+"</router-link></li>"
         }
 
+        console.log(names);
         var temUl = "<ul>"+temString+"</ul>";
 
 
@@ -77,7 +78,7 @@ export default const template = [
     function (names) {
         var temString = "";
         for(var i in names){
-            temString+="<li><router-link to='"+name[i].src+"'>"+name[i].text+"</router-link></li>"
+            temString+="<li><router-link to='"+names[i].src+"'>"+names[i].text+"</router-link></li>"
         }
 
         var temUl = "<ul>"+temString+"</ul>";
@@ -128,7 +129,7 @@ export default const template = [
     function (names) {
         var temString = "";
         for(var i in names){
-            temString+="<li><router-link to='"+name[i].src+"'>"+name[i].text+"</router-link></li>"
+            temString+="<li><router-link to='"+names[i].src+"'>"+names[i].text+"</router-link></li>"
         }
 
         var temUl = "<ul>"+temString+"</ul>";
