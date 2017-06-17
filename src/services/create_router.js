@@ -101,6 +101,71 @@ var b = {
 * 有点像遍历二叉树 不过这是树结构
 * */
 
+/* 拿到的数据不是json 所以需要报一个var c = 然后来执行*/
+var c = `var c=[
+            {name:"一级导航1",
+             short:"first",
+             children:[
+                 {name:"二级导航1",
+                     short:"first",
+                     children:[
+                         {name:"三级导航",
+                             short:"first"
+                         }
+                     ]
+                 }
+             ]
+            },
+            {name:"一级导航2",
+                short:"first",
+                children:[
+                    {name:"二级导航2",
+                        short:"first",
+                        children:[
+                            {name:"三级导航",
+                                short:"first"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {name:"一级导航3",
+                short:"first",
+                children:[
+                    {name:"二级导航3",
+                        short:"first",
+                        children:[
+                            {name:"三级导航",
+                                short:"first"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+        var t =gernerateData(c);
+        console.log(t);
+        `;
+
+eval(c);
+
+/*把json数据转换成我想要的数据*/
+function gernerateData(nav) {
+    var tem = {};
+    nav.forEach(function (val) {
+        console.log(val);
+      if(val.children&&val.children.length>0){
+          tem[val.name+"_"+val.short]=gernerateData(val.children)
+      }else {
+          tem[val.name+"_"+val.short]=""
+      }
+    })
+
+    return tem;
+}
+
+
+
 function wrapViews(a) {
     return {
         "views":a
@@ -279,6 +344,4 @@ function generateRoutejs(data) {
 }
 
 
-// console.log(routerTempalte[0](["1","2","3"]));
-
-generateRoutejs(b);
+// generateRoutejs(b);

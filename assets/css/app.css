@@ -114,3 +114,7 @@ body{
 .create-next p{
     padding: 2px 8px;
 }
+
+nav {
+    background: #00cc66;
+}

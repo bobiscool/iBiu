@@ -42,7 +42,7 @@ Vue.component('log', {
 const app = new Vue({
     el: '#app',
     data: {
-        example:[
+        example:`[
             {name:"一级导航1",
              short:"first",
              children:[
@@ -82,7 +82,7 @@ const app = new Vue({
                     }
                 ]
             }
-        ],
+        ]`,
         formValidate: {
             iviewVersion: '2.x',
             css: [],
@@ -97,9 +97,48 @@ const app = new Vue({
             desc: '',
             git: '',
             navNeed:false,
-            nav:[
 
-            ]
+            nav:`[
+            {name:"一级导航1",
+             short:"first",
+             children:[
+                 {name:"二级导航1",
+                     short:"first",
+                     children:[
+                         {name:"三级导航",
+                             short:"first"
+                         }
+                     ]
+                 }
+             ]
+            },
+            {name:"一级导航2",
+                short:"first",
+                children:[
+                    {name:"二级导航2",
+                        short:"first",
+                        children:[
+                            {name:"三级导航",
+                                short:"first"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {name:"一级导航3",
+                short:"first",
+                children:[
+                    {name:"二级导航3",
+                        short:"first",
+                        children:[
+                            {name:"三级导航",
+                                short:"first"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]`
         },
         ruleValidate: {
 
@@ -130,7 +169,9 @@ const app = new Vue({
             eslintIgnore: 1,
             gitignore: 1,
             editorconfig: 1
-        }
+        },
+        temName:"",
+        temShort:""
     },
     computed: {
         titleStatus () {
@@ -470,6 +511,18 @@ const app = new Vue({
         },
         handleBackHome () {
             window.location.href = 'index.html';
+        },
+        addDlist:function () {
+
+        }
+        
+    },
+    watch:{
+        formValidate:{
+          deep:true,
+          handler:function (val) {
+              console.log(val.nav);
+          }
         }
     }
 });

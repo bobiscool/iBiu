@@ -35,12 +35,23 @@
                     </Form-item>
 
                     <!-- TODO: 添加 导航 -->
-                    <Form-item label="是否需要导航：">
+                    <Form-item label="是否需要导航">
+
                             <i-switch v-model="formValidate.navNeed" ></i-switch>
                     </Form-item>
-                    <Form-item label="填写你的导航树：" v-if="formValidate.navNeed">
-                        <Input v-model="formValidate.nav" type="textarea" :autosize="true"></Input>
-                        <textarea :value="formValidate.nav"></textarea>
+                    <Form-item label="填写你的导航树：(请按示例格式填写)" v-if="formValidate.navNeed">
+
+                        <div class="nav" >
+                            <!--<textarea  ></textarea>-->
+                            <textarea name="textarea"
+                                      rows="10" cols="50" v-model="formValidate.nav"
+                                      style="border: 1px solid #39f;line-height: 20px;"
+
+                            ></textarea>
+
+                        </div>
+                        <!--<Input v-model="formValidate.nav" type="text"></Input>-->
+                        <!--<textarea :value="formValidate.nav"></textarea>-->
                     </Form-item>
                     <!-- TODO: 添加 登录 -->
 
