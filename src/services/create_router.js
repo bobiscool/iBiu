@@ -4,7 +4,7 @@
 const writeFile = require('./write-file');
 const fs = require('fs');
 const path = require('path');
-const { template } = require("./vue_template_A.js");
+const { template,routerTempalte } = require("./vue_template_A.js");
 var a =[
     {name:"一级导航1",
         short:"first",
@@ -168,16 +168,26 @@ function splitShortAll(names,src) {
 
 
 
+
 function splitShort(name) {
 
         return {name:name.split('_')[0],short:name.split('_')[1]}
 
 }
 
-
+function getShort(name) {
+    return name.split('_')[1];
+}
 /*生成src*/
-function generateSrc() {
 
+function getChildrenShort(data){
+    var a = getChildren(data);
+    var b =[];
+    a.forEach(function (val) {
+        b.push(getShort(val));
+    })
+
+    return b;
 }
 
 
@@ -202,7 +212,7 @@ function generateDir(data,pre_dir) {
            if(!fs.existsSync(pre_dir+'/'+tem.short)){
                if(pre_dir){
 
-                   // console.log(getDeep(pre_dir).length);
+                   console.log(pre_dir);
                    fs.mkdirSync(pre_dir+'/'+tem.short);//当前目录
                    fs.writeFile(`${pre_dir}/${tem.short}/index.vue`,
                        template[getDeep(pre_dir).length]
@@ -228,8 +238,8 @@ function generateDir(data,pre_dir) {
 
 // generatePath(a);
 // console.log(paths);
-
-generateDir(wrapViews(b),__dirname);
+// todo
+// generateDir(wrapViews(b),__dirname);
 
 // 下一步 根据路径选择模板
 /*
@@ -239,8 +249,36 @@ generateDir(wrapViews(b),__dirname);
 
 
 
-
-console.log(getDeep('/Users/mac/Downloads/iview-cli-2.0/src/services/views/一级导航1_short1/ss/ss/ssdff/sfdsg/dfg/dfg'));
+//
+// console.log(getDeep('/Users/mac/Downloads/iview-cli-2.0/src/services/views/一级导航1_short1/ss/ss/ssdff/sfdsg/dfg/dfg'));
 // console.log(paths);
 
-console.log(__dirname);
+// console.log(__dirname);
+
+/*根据数据 创建js*/
+
+/*todo  首先是创建 文件夹子router
+*
+*
+* */
+
+
+function generateRoutejs(data) {
+    var names =getChildren(data);
+    var namesShort = [];
+    names.forEach(function (val) {
+        namesShort.push(getShort(val));
+    });
+
+    console.log(namesShort);
+    fs.mkdir('router');
+    fs.writeFile(`router/index.js`,routerTempalte[0](namesShort));
+    for(var i in namesShort){
+        fs.writeFile(`router/${namesShort[i]}.js`,routerTempalte[1](namesShort[i],getChildrenShort(data[names[i]])));
+    }
+}
+
+
+// console.log(routerTempalte[0](["1","2","3"]));
+
+generateRoutejs(b);

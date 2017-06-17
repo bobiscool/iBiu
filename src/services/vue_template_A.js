@@ -9,13 +9,12 @@ exports.template = [
     function (names) {
         //一级导航
         var temString = "";
-        for(var i in names){
-            temString+="<li><router-link to='"+names[i].src+"'>"+names[i].text+"</router-link></li>"
+        for (var i in names) {
+            temString += "<li><router-link to='" + names[i].src + "'>" + names[i].text + "</router-link></li>"
         }
 
         console.log(names);
-        var temUl = "<ul>"+temString+"</ul>";
-
+        var temUl = "<ul>" + temString + "</ul>";
 
 
         return `
@@ -77,12 +76,11 @@ exports.template = [
 
     function (names) {
         var temString = "";
-        for(var i in names){
-            temString+="<li><router-link to='"+names[i].src+"'>"+names[i].text+"</router-link></li>"
+        for (var i in names) {
+            temString += "<li><router-link to='" + names[i].src + "'>" + names[i].text + "</router-link></li>"
         }
 
-        var temUl = "<ul>"+temString+"</ul>";
-
+        var temUl = "<ul>" + temString + "</ul>";
 
 
         return `
@@ -128,12 +126,11 @@ exports.template = [
     },
     function (names) {
         var temString = "";
-        for(var i in names){
-            temString+="<li><router-link to='"+names[i].src+"'>"+names[i].text+"</router-link></li>"
+        for (var i in names) {
+            temString += "<li><router-link to='" + names[i].src + "'>" + names[i].text + "</router-link></li>"
         }
 
-        var temUl = "<ul>"+temString+"</ul>";
-
+        var temUl = "<ul>" + temString + "</ul>";
 
 
         return `
@@ -218,4 +215,93 @@ exports.template = [
  
 </style>`
     },
+]
+
+
+exports.routerTempalte = [
+    function (names) {
+        var im = "";
+        var im2 = "";
+        for (var i in names) {
+            im += "\t import " + names[i] + " from './" + names[i] + ".js'; \n";
+            im2 += names[i]+",\n";
+        }
+
+
+        return `
+        import Vue from 'vue';
+        import Router from 'vue-router';
+        import contend from 'views/index.vue'
+
+       
+       ${im}
+        
+       Vue.use(Router);
+       
+       export default new Router({
+       mode:'history',
+       routes: [
+        {
+            path: '/',
+            name: 'home',
+            redirect:'/home',
+            component: contend,
+            children:[
+                ${im2}
+        ]
+
+        },
+      {
+            path:'*',
+            name:'404',
+            component:notFound
+    }
+  ]
+})
+   
+        `
+    },
+    function (mainName,childrens) {
+
+    var temChild = ""
+
+
+
+    if(childrens.length>=0){
+
+        for(var i in childrens){
+            temChild+=" {\n      path:\"/" + mainName + "/" + childrens[i] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/index.vue'));\n        })\n      }\n    }\n";
+        }
+
+
+        return `
+       export default {
+  path:"/${mainName}",
+  meta:{requiresAuth:true},
+  redirect:"/${mainName}/${childrens[0]}",
+  component(resolve) {
+    require.ensure(['views/${mainName}/index.vue'], () => {
+      resolve(require('views/${mainName}/index.vue'));
+    })
+  },
+  children:[
+    ${temChild}
+  ]
+} `
+
+    }else {
+        return `
+       export default {
+  path:"/${mainName}",
+  meta:{requiresAuth:true},
+  component(resolve) {
+    require.ensure(['views/${mainName}/index.vue'], () => {
+      resolve(require('views/${mainName}/index.vue'));
+    })
+  }
+} `
+    }
+
+
+    }
 ]
