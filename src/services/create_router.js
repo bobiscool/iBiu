@@ -5,95 +5,11 @@ const writeFile = require('./write-file');
 const fs = require('fs');
 const path = require('path');
 const { template,routerTempalte } = require("./vue_template_A.js");
-var a =[
-    {name:"一级导航1",
-        short:"first",
-        children:[
-            {name:"二级导航1",
-                short:"first",
-                children:[
-                    {name:"三级导航",
-                        short:"first"
-                    }
-                ]
-            }
-        ]
-    },
-    {name:"一级导航2",
-        short:"first",
-        children:[
-            {name:"二级导航2",
-                short:"first",
-                children:[
-                    {name:"三级导航",
-                        short:"first"
-                    }
-                ]
-            }
-        ]
-    },
-    {name:"一级导航3",
-        short:"first",
-        children:[
-            {name:"二级导航3",
-                short:"first",
-                children:[
-                    {name:"三级导航",
-                        short:"first"
-                    }
-                ]
-            }
-        ]
-    }
-];
-var layer =0;
 var paths = []
 
 
 // console.log(template);
-var b = {
-    "一级导航1_short1":{
-        "二级导航2_short2":{
-            "三级导航2_short2":{
 
-            },
-            "三级导航3_short3":{},
-            "三级导航4_short4":{}
-        },
-        "二级导航3_short3":{
-            "三级导航2_short2":{},
-            "三级导航3_short3":{},
-            "三级导航4_short4":{}
-        },
-        "二级导航4_short4":{
-            "三级导航2_short2":{},
-            "三级导航3_short3":{}
-        }
-    },
-    "一级导航2_short2":{
-        "二级导航2_short2":{
-            "三级导航2_short2":{},
-            "三级导航3_short3":{},
-            "三级导航4_short4":{}
-        },
-        "二级导航3_short3":{
-            "三级导航2_short2":{},
-            "三级导航3_short3":{},
-            "三级导航4_short4":{}
-        },
-        "二级导航4_short4":{}
-    },
-    "一级导航3_short3":{
-        "二级导航2_short2":{},
-        "二级导航3_short3":{},
-        "二级导航4_short4":{}
-    },
-    "一级导航4_short4":{
-        "二级导航2_short2":{},
-        "二级导航3_short3":{},
-        "二级导航4_short4":{}
-    }
-}
 // 拿到数据 创建目录
 /*
 * 首先拿到数据
@@ -102,6 +18,7 @@ var b = {
 * */
 
 /* 拿到的数据不是json 所以需要报一个var c = 然后来执行*/
+
 var c = `var c=[
             {name:"一级导航1",
              short:"first",
@@ -328,7 +245,7 @@ function generateDir(data,pre_dir) {
 * */
 
 
-function generateRoutejs(data) {
+function generateRoutejs(location,data) {
     var names =getChildren(data);
     var namesShort = [];
     names.forEach(function (val) {
@@ -336,12 +253,28 @@ function generateRoutejs(data) {
     });
 
     console.log(namesShort);
-    fs.mkdir('router');
-    fs.writeFile(`router/index.js`,routerTempalte[0](namesShort));
+    fs.mkdir(`${location}`+'/router');
+    fs.writeFile(`${location}/router/index.js`,routerTempalte[0](namesShort));
     for(var i in namesShort){
-        fs.writeFile(`router/${namesShort[i]}.js`,routerTempalte[1](namesShort[i],getChildrenShort(data[names[i]])));
+        fs.writeFile(`${location}/router/${namesShort[i]}.js`,routerTempalte[1](namesShort[i],getChildrenShort(data[names[i]])));
     }
 }
 
 
 // generateRoutejs(b);
+
+
+/*最后暴露一个函数*/
+exports.create_router = function (location,navData) {
+    var c=`var data=${navData}
+        var geData =gernerateData(data);
+        console.log(geData);
+        
+         generateDir(wrapViews(geData),"${location}/src");
+         generateRoutejs("${location}/src",geData)
+        console.log("执行")
+        `;
+
+    eval(c);
+    // console.log(c);
+}

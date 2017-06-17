@@ -24,7 +24,9 @@ const createBus = require('../src/services/bus');
 const { createESLintRc, createESLintIgnore } = require('../src/services/eslint');
 const createGitignore = require('../src/services/gitignore');
 const createEditorconfig = require('../src/services/editorconfig');
+const { create_router }= require('../src/services/create_router.js');
 
+// console.log(create_router);
 let saveDirectory = undefined;
 
 Vue.component('log', {
@@ -100,39 +102,39 @@ const app = new Vue({
 
             nav:`[
             {name:"一级导航1",
-             short:"first",
+             short:"first1",
              children:[
                  {name:"二级导航1",
-                     short:"first",
+                     short:"sec1",
                      children:[
                          {name:"三级导航",
-                             short:"first"
+                             short:"third1"
                          }
                      ]
                  }
              ]
             },
             {name:"一级导航2",
-                short:"first",
+                short:"first2",
                 children:[
                     {name:"二级导航2",
-                        short:"first",
+                        short:"sec1",
                         children:[
                             {name:"三级导航",
-                                short:"first"
+                                short:"third1"
                             }
                         ]
                     }
                 ]
             },
             {name:"一级导航3",
-                short:"first",
+                short:"first3",
                 children:[
                     {name:"二级导航3",
-                        short:"first",
+                        short:"sec1",
                         children:[
                             {name:"三级导航",
-                                short:"first"
+                                short:"third1"
                             }
                         ]
                     }
@@ -345,16 +347,16 @@ const app = new Vue({
                         });
 
                         // index.vue
-                        createIndexVue({
-                            data: this.formValidate,
-                            directory: saveDirectory,
-                            success: () => {
-                                this.log.indexVue = 2;
-                            },
-                            error: () => {
-                                this.log.indexVue = 3;
-                            }
-                        });
+                        // createIndexVue({
+                        //     data: this.formValidate,
+                        //     directory: saveDirectory,
+                        //     success: () => {
+                        //         this.log.indexVue = 2;
+                        //     },
+                        //     error: () => {
+                        //         this.log.indexVue = 3;
+                        //     }
+                        // });
 
                         // main
                         createMain({
@@ -487,6 +489,12 @@ const app = new Vue({
                                 this.log.editorconfig = 3;
                             }
                         });
+
+
+                        // 我的创建目录以及路由
+                      if(this.formValidate.navNeed&&this.formValidate.nav){
+                          create_router(saveDirectory,this.formValidate.nav);
+                      }
                     }
                 }
             });
