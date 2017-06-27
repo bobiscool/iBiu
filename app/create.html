@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="app" v-cloak>
-        <div class="title" v-show="status === 'options'">iView - 新建工程</div>
+        <div class="title" v-show="status === 'options'">新建项目</div>
         <div class="title" v-show="status === 'log' && titleStatus === 1">
             iView - 创建中
             <Icon type="load-c" class="ivu-load-loop"></Icon>
@@ -26,9 +26,11 @@
         <div class="create-app">
             <div class="create-form" v-show="status === 'options'">
                 <i-form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="120">
-                    <Form-item label="iView 版本：" prop="iviewVersion">
-                        <Radio-group v-model="formValidate.iviewVersion">
-                            <Radio label="2.x">2.0.0-rc.13</Radio>
+                    <Form-item label="你要组件库吗：" prop="ui">
+                        <Radio-group v-model="formValidate.ui">
+                            <Radio label="iview">iview</Radio>
+                            <Radio label="elementUI">elementUI</Radio>
+                            <Radio label="none">裸奔！</Radio>
                         </Radio-group>
 
                         <!-- @TODO 这里需要改 添加elementUI ？ -->
@@ -167,7 +169,7 @@
 
                 <Row class="create-app-submit create-info-submit">
                     <i-col span="9" offset="2">
-                        <i-button type="success" long @click="handleNext" icon="ios-information" :disabled="titleStatus !== 2">进一步配置</i-button>
+                        <i-button type="success" long @click="handleNext" icon="ios-information" >进一步配置</i-button>
                     </i-col>
                     <i-col span="9" offset="2">
                         <i-button type="ghost" long @click="handleOpenDirectory" style="margin-left: 8px" icon="folder">打开目录</i-button>

@@ -19,8 +19,7 @@ let file = {
     "license": "MIT",
     "dependencies": {
         "vue": "^2.2.6",
-        "vue-router": "^2.3.1",
-        "iview": "^2.0.0-rc.13"
+        "vue-router": "^2.3.1"
     },
     "devDependencies": {
         "autoprefixer-loader": "^2.0.0",
@@ -48,6 +47,9 @@ let file = {
     }
 };
 
+
+
+
 module.exports = function (opts) {
     const data = opts.data;
 
@@ -55,6 +57,18 @@ module.exports = function (opts) {
     if (data.version) file.version = data.version;
     if (data.desc) file.description = data.desc;
     if (data.git) file.repository.url = data.git;
+
+    if(data.ui.indexOf("elementUI")>-1){
+        file.dependencies['element-ui']="^1.3.5";
+    }
+    if(data.ui.indexOf("iview")>-1){
+
+        file.dependencies['iview']="^2.0.0-rc.13";
+    }
+
+    if(data.ui.indexOf("none")>-1){
+
+    }
 
     if (data.css.indexOf('less') > -1) {
         file.devDependencies['less'] = '^2.7.1';

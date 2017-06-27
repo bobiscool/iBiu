@@ -234,30 +234,30 @@ exports.routerTempalte = [
         import contend from 'views/index.vue'
 
        
-       ${im}
+        ${im}
         
-       Vue.use(Router);
+        Vue.use(Router);
        
-       export default new Router({
-       mode:'history',
-       routes: [
-        {
-            path: '/',
-            name: 'home',
-            redirect:'/home',
-            component: contend,
-            children:[
-                ${im2}
-        ]
+        export default new Router({
+            mode:'history',
+            routes: [
+            {
+                path: '/',
+                name: 'home',
+                redirect:'/home',
+                component: contend,
+                children:[
+                    ${im2}
+            ]
 
-        },
-      {
+            },
+        {
             path:'*',
             name:'404',
             component:notFound
-    }
-  ]
-})
+            }
+        ]
+    })
    
         `
     },

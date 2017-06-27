@@ -102,7 +102,7 @@ exports.createWebpackBase = function (opts) {
         };
     `;
     writeFile({
-        directory: opts.directory,
+        directory: opts.directory+"/build",
         fileName: 'webpack.base.config.js',
         data: webpack,
         success () {

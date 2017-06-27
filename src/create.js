@@ -25,6 +25,7 @@ const { createESLintRc, createESLintIgnore } = require('../src/services/eslint')
 const createGitignore = require('../src/services/gitignore');
 const createEditorconfig = require('../src/services/editorconfig');
 const { create_router }= require('../src/services/create_router.js');
+const { create_build }= require('../src/services/create_build.js');
 
 // console.log(create_router);
 let saveDirectory = undefined;
@@ -87,8 +88,10 @@ const app = new Vue({
         ]`,
         formValidate: {
             iviewVersion: '2.x',
+            ui:"elementUI",
             css: [],
             ajax: true,
+            jq:true,
             i18n: false,
             store: [],
             chart: [],
@@ -495,6 +498,18 @@ const app = new Vue({
                       if(this.formValidate.navNeed&&this.formValidate.nav){
                           create_router(saveDirectory,this.formValidate.nav);
                       }
+                      // 创建 配置项
+                        create_build(
+                            {
+                                directory: saveDirectory,
+                                success: () => {
+                                    // this.log.editorconfig = 2;
+                                },
+                                error: () => {
+                                    // this.log.editorconfig = 3;
+                                }
+                            }
+                        )
                     }
                 }
             });
