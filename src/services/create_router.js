@@ -1,7 +1,6 @@
 /**
  * Created by mac WuYiPing on 17/6/6.
  */
-const writeFile = require('./write-file');
 const fs = require('fs');
 const path = require('path');
 const { template,routerTempalte } = require("./vue_template_A.js");

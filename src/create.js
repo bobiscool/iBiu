@@ -8,7 +8,6 @@ const shell = electron.shell;
 const fs = require('fs');
 const createPackage = require('../src/services/package');
 const createBabel = require('../src/services/babel');
-const { createWebpackBase, createWebpackDev, createWebpackProd } = require('../src/services/webpack');
 const createVendors = require('../src/services/vendors');
 const createRouter = require('../src/services/router');
 const createI18n = require('../src/services/i18n');
@@ -26,6 +25,9 @@ const createGitignore = require('../src/services/gitignore');
 const createEditorconfig = require('../src/services/editorconfig');
 const { create_router }= require('../src/services/create_router.js');
 const { create_build }= require('../src/services/create_build.js');
+const { create_config }= require('../src/services/create_config.js');
+const { create_static }= require('../src/services/create_static.js');
+const { readme }= require('../src/services/readme.js');
 
 // console.log(create_router);
 let saveDirectory = undefined;
@@ -243,37 +245,6 @@ const app = new Vue({
                             }
                         });
 
-                        // webpack
-                        createWebpackBase({
-                            data: this.formValidate,
-                            directory: saveDirectory,
-                            success: () => {
-                                this.log.webpackBase = 2;
-                            },
-                            error: () => {
-                                this.log.webpackBase = 3;
-                            }
-                        });
-                        createWebpackDev({
-                            data: this.formValidate,
-                            directory: saveDirectory,
-                            success: () => {
-                                this.log.webpackDev = 2;
-                            },
-                            error: () => {
-                                this.log.webpackDev = 3;
-                            }
-                        });
-                        createWebpackProd({
-                            data: this.formValidate,
-                            directory: saveDirectory,
-                            success: () => {
-                                this.log.webpackProd = 2;
-                            },
-                            error: () => {
-                                this.log.webpackProd = 3;
-                            }
-                        });
 
                         // vendors
                         createVendors({
@@ -509,7 +480,40 @@ const app = new Vue({
                                     // this.log.editorconfig = 3;
                                 }
                             }
-                        )
+                        );
+                      // 创建
+                        create_config(
+                            {
+                                directory: saveDirectory,
+                                success: () => {
+                                    // this.log.editorconfig = 2;
+                                },
+                                error: () => {
+                                    // this.log.editorconfig = 3;
+                                }
+                            }
+                        );
+                        //创建static
+                        create_static({
+                            directory: saveDirectory,
+                            success: () => {
+                                // this.log.editorconfig = 2;
+                            },
+                            error: () => {
+                                // this.log.editorconfig = 3;
+                            }
+                        });
+                       //readme
+                        readme({
+                            directory: saveDirectory,
+                            success: () => {
+                                // this.log.editorconfig = 2;
+                            },
+                            error: () => {
+                                // this.log.editorconfig = 3;
+                            }
+                        })
+
                     }
                 }
             });

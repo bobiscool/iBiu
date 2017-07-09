@@ -31,12 +31,12 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       children: false,
       chunks: false,
       chunkModules: false
-    }) + '\n\n')
+    }) + '\\n\\n')
 
-    console.log(chalk.cyan('  Build complete.\n'))
+    console.log(chalk.cyan('  Build complete.\\n'))
     console.log(chalk.yellow(
-      '  Tip: built files are meant to be served over an HTTP server.\n' +
-      '  Opening index.html over file:// won\'t work.\n'
+      '  Tip: built files are meant to be served over an HTTP server.\\n' +
+      '  Opening index.html over file:// won\\'t work.\\n'
     ))
   })
 })
@@ -216,7 +216,7 @@ var readyPromise = new Promise(resolve => {
 
 console.log('> Starting dev server...')
 devMiddleware.waitUntilValid(() => {
-  console.log('> Listening at ' + uri + '\n')
+  console.log('> Listening at ' + uri+'\\n')
   // when env is testing, don't need open it
   if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
     opn(uri)
@@ -317,17 +317,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.vue$/,
+        test: /\\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
       {
-        test: /\.jsx?$/,
+        test: /\\.jsx?$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test')]
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\\.(png|jpe?g|gif|svg)(\\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
@@ -335,7 +335,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        test: /\\.(woff2?|eot|ttf|otf)(\\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
@@ -519,7 +519,7 @@ if (config.build.productionGzip) {
       asset: '[path].gz[query]',
       algorithm: 'gzip',
       test: new RegExp(
-        '\\.(' +
+        '\\\.(' +
         config.build.productionGzipExtensions.join('|') +
         ')$'
       ),
@@ -549,5 +549,95 @@ module.exports = webpackConfig
             opts.error();
         }
     });
+
+
+
+ var utils = `
+ var path = require('path')
+var config = require('../config')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+exports.assetsPath = function (_path) {
+  var assetsSubDirectory = process.env.NODE_ENV === 'production'
+    ? config.build.assetsSubDirectory
+    : config.dev.assetsSubDirectory
+  return path.posix.join(assetsSubDirectory, _path)
+}
+
+exports.cssLoaders = function (options) {
+  options = options || {}
+
+  var cssLoader = {
+    loader: 'css-loader',
+    options: {
+      minimize: process.env.NODE_ENV === 'production',
+      sourceMap: options.sourceMap
+    }
+  }
+
+  // generate loader string to be used with extract text plugin
+  function generateLoaders (loader, loaderOptions) {
+    var loaders = [cssLoader]
+    if (loader) {
+      loaders.push({
+        loader: loader + '-loader',
+        options: Object.assign({}, loaderOptions, {
+          sourceMap: options.sourceMap
+        })
+      })
+    }
+
+    // Extract CSS when that option is specified
+    // (which is the case during production build)
+    if (options.extract) {
+      return ExtractTextPlugin.extract({
+        use: loaders,
+        fallback: 'vue-style-loader'
+      })
+    } else {
+      return ['vue-style-loader'].concat(loaders)
+    }
+  }
+
+  // https://vue-loader.vuejs.org/en/configurations/extract-css.html
+  return {
+    css: generateLoaders(),
+    postcss: generateLoaders(),
+    less: generateLoaders('less'),
+    sass: generateLoaders('sass', { indentedSyntax: true }),
+    scss: generateLoaders('sass'),
+    stylus: generateLoaders('stylus'),
+    styl: generateLoaders('stylus')
+  }
+}
+
+// Generate loaders for standalone style files (outside of .vue)
+exports.styleLoaders = function (options) {
+  var output = []
+  var loaders = exports.cssLoaders(options)
+  for (var extension in loaders) {
+    var loader = loaders[extension]
+    output.push({
+      test: new RegExp('\\\.' + extension + '$'),
+      use: loader
+    })
+  }
+  return output
+}
+
+ 
+ `;
+    writeFile({
+        directory: opts.directory + "/build",
+        fileName: 'utils.js',
+        data: utils,
+        success () {
+            opts.success();
+        },
+        error () {
+            opts.error();
+        }
+    });
+
 
 }

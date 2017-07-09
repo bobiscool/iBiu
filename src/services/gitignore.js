@@ -2,16 +2,14 @@ const writeFile = require('./write-file');
 
 module.exports = function (opts) {
     const file =
-`.idea
-.idea/
-.DS_Store
+`.DS_Store
 node_modules/
-.project
-dist
-dist/*
-src/config/*.tmp
-src/config/env.js
-npm-debug.log`;
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.idea/workspace.xml
+`;
     writeFile({
         directory: opts.directory,
         fileName: '.gitignore',

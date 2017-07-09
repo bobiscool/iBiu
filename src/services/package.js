@@ -6,10 +6,9 @@ let file = {
     "description": "",
     "main": "index.js",
     "scripts": {
-        "init": "webpack --progress --config webpack.dev.config.js",
-        "dev": "webpack-dev-server --content-base ./ --open --inline --hot --compress --history-api-fallback --config webpack.dev.config.js",
-        "build": "webpack --progress --hide-modules --config webpack.prod.config.js",
-        "lint": "eslint --fix --ext .js,.vue src"
+        "dev": "node build/dev-server.js",
+        "start": "node build/dev-server.js",
+        "build": "node build/build.js"
     },
     "repository": {
         "type": "git",
@@ -43,7 +42,40 @@ let file = {
         "vue-template-compiler": "^2.2.1",
         "webpack": "^2.2.1",
         "webpack-dev-server": "^2.4.1",
-        "webpack-merge": "^3.0.0"
+        "webpack-merge": "^3.0.0",
+        "autoprefixer": "^6.7.2",
+        "axios": "^0.16.2",
+        "babel-helper-vue-jsx-merge-props": "^2.0.2",
+        "babel-plugin-syntax-jsx": "^6.18.0",
+        "babel-plugin-transform-vue-jsx": "^3.4.3",
+        "babel-preset-env": "^1.3.2",
+        "babel-preset-react": "^6.24.1",
+        "babel-preset-stage-2": "^6.22.0",
+        "babel-register": "^6.22.0",
+        "chalk": "^1.1.3",
+        "connect-history-api-fallback": "^1.3.0",
+        "copy-webpack-plugin": "^4.0.1",
+        "eventsource-polyfill": "^0.9.6",
+        "express": "^4.14.1",
+        "friendly-errors-webpack-plugin": "^1.1.3",
+        "http-proxy-middleware": "^0.17.3",
+        "node-sass": "^4.5.3",
+        "opn": "^4.0.2",
+        "optimize-css-assets-webpack-plugin": "^1.3.0",
+        "ora": "^1.2.0",
+        "rimraf": "^2.6.0",
+        "sass-loader": "^6.0.5",
+        "semver": "^5.3.0",
+        "shelljs": "^0.7.6",
+        "vue": "2.3.3",
+        "vuex": "^2.3.1",
+        "webpack-bundle-analyzer": "^2.2.1",
+        "webpack-dev-middleware": "^1.10.0",
+        "webpack-hot-middleware": "^2.18.0",
+    },
+    "engines": {
+        "node": ">= 4.0.0",
+        "npm": ">= 3.0.0"
     }
 };
 

@@ -1,31 +1,7 @@
 const writeFile = require('./write-file');
 
 module.exports = function (opts) {
-    let i18n = '';
-    let i18nUse = '';
-    let i18nAuto = '';
-    if (opts.data.i18n) {
-        i18n = `
-            import VueI18n from 'vue-i18n';
-            import Locales from './locale';
-            import zhLocale from 'iview/src/locale/lang/zh-CN';
-            import enLocale from 'iview/src/locale/lang/en-US';`;
-        i18nUse = `Vue.use(VueI18n);`;
-        i18nAuto = `
-            // 自动设置语言
-            const navLang = navigator.language;
-            const localLang = (navLang === 'zh-CN' || navLang === 'en-US') ? navLang : false;
-            const lang = window.localStorage.getItem('language') || localLang || 'zh-CN';
-            
-            Vue.config.lang = lang;
-            
-            // 多语言配置
-            const locales = Locales;
-            const mergeZH = Object.assign(zhLocale, locales['zh-CN']);
-            const mergeEN = Object.assign(enLocale, locales['en-US']);
-            Vue.locale('zh-CN', mergeZH);
-            Vue.locale('en-US', mergeEN);`;
-    }
+
 
     let vuex = '';
     let vuexUse = '';
@@ -60,16 +36,10 @@ module.exports = function (opts) {
         import VueRouter from 'vue-router';
         import Routers from './router';
         ${vuex}
-        import Util from './libs/util';
         import App from './app.vue';
-        import 'iview/dist/styles/iview.css';
-        ${i18n}
         
         Vue.use(VueRouter);
         ${vuexUse}
-        ${i18nUse}
-        Vue.use(iView);
-        ${i18nAuto}
         
         
         // 路由配置
