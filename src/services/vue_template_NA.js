@@ -19,7 +19,7 @@ export default const template = [
                 <li class="closed"><router-link to="/warning">
                   <i class="side-bar-icon">&#xe609;</i>
                   预警
-                </router-link></li>
+                </route r-link></li>
                 <li class="closed"><router-link to="/assets">
                   <i class="side-bar-icon">&#xe66a;</i>
                   资产

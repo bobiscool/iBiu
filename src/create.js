@@ -149,12 +149,11 @@ const app = new Vue({
         log: {    // 1 is doing, 2 is done, 3 is error
             package: 1,
             babel: 1,
-            webpackBase: 1,
-            webpackDev: 1,
-            webpackProd: 1,
-            vendors: 1,
+            builds: 1,
+            configs:1,
+            static:1,
+            readme:1,
             router: 1,
-            i18n: 1,
             app: 1,
             indexHtml: 1,
             indexVue: 1,
@@ -296,39 +295,7 @@ const app = new Vue({
 
                         // util.js
 
-                        // vuex
-                        // if (this.formValidate.store.indexOf('vuex') > -1) {
-                        //     createVuexStore({
-                        //         data: this.formValidate,
-                        //         directory: saveDirectory,
-                        //         success: () => {
-                        //             this.log.vuexStore = 2;
-                        //         },
-                        //         error: () => {
-                        //             this.log.vuexStore = 3;
-                        //         }
-                        //     });
-                        //     createVuexActions({
-                        //         data: this.formValidate,
-                        //         directory: saveDirectory,
-                        //         success: () => {
-                        //             this.log.vuexActions = 2;
-                        //         },
-                        //         error: () => {
-                        //             this.log.vuexActions = 3;
-                        //         }
-                        //     });
-                        //     createVuexMutations({
-                        //         data: this.formValidate,
-                        //         directory: saveDirectory,
-                        //         success: () => {
-                        //             this.log.vuexMutations = 2;
-                        //         },
-                        //         error: () => {
-                        //             this.log.vuexMutations = 3;
-                        //         }
-                        //     });
-                        // }
+
 
                         // bus.js
                         if (this.formValidate.store.indexOf('bus.js') > -1) {
@@ -344,29 +311,7 @@ const app = new Vue({
                             });
                         }
 
-                        // ESLint
-                        if (this.formValidate.eslint) {
-                            createESLintRc({
-                                data: this.formValidate,
-                                directory: saveDirectory,
-                                success: () => {
-                                    this.log.eslintRc = 2;
-                                },
-                                error: () => {
-                                    this.log.eslintRc = 3;
-                                }
-                            });
-                            createESLintIgnore({
-                                data: this.formValidate,
-                                directory: saveDirectory,
-                                success: () => {
-                                    this.log.eslintIgnore = 2;
-                                },
-                                error: () => {
-                                    this.log.eslintIgnore = 3;
-                                }
-                            });
-                        }
+
 
                         // .gitignore
                         createGitignore({
@@ -402,10 +347,12 @@ const app = new Vue({
                             {
                                 directory: saveDirectory,
                                 success: () => {
-                                    // this.log.editorconfig = 2;
+                                    this.log.builds = 2;
+
                                 },
                                 error: () => {
-                                    // this.log.editorconfig = 3;
+                                    this.log.builds = 3;
+
                                 }
                             }
                         );
@@ -414,10 +361,10 @@ const app = new Vue({
                             {
                                 directory: saveDirectory,
                                 success: () => {
-                                    // this.log.editorconfig = 2;
+                                    this.log.configs = 2;
                                 },
                                 error: () => {
-                                    // this.log.editorconfig = 3;
+                                    this.log.configs = 3;
                                 }
                             }
                         );
@@ -425,20 +372,20 @@ const app = new Vue({
                         create_static({
                             directory: saveDirectory,
                             success: () => {
-                                // this.log.editorconfig = 2;
+                                this.log.static = 2;
                             },
                             error: () => {
-                                // this.log.editorconfig = 3;
+                                this.log.static = 3;
                             }
                         });
                        //readme
                         readme({
                             directory: saveDirectory,
                             success: () => {
-                                // this.log.editorconfig = 2;
+                                this.log.readme = 2;
                             },
                             error: () => {
-                                // this.log.editorconfig = 3;
+                                this.log.readme = 3;
                             }
                         })
 

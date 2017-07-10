@@ -127,25 +127,15 @@
             <div class="create-info" v-show="status === 'log'">
                 <log :status="log.package" content="创建 package.json"></log>
                 <log :status="log.babel" content="创建 .babelrc"></log>
-                <log :status="log.webpackBase" content="创建 webpack 基础配置文件"></log>
-                <log :status="log.webpackDev" content="创建 webpack 开发环境配置文件"></log>
-                <log :status="log.webpackProd" content="创建 webpack 生产环境配置文件"></log>
-                <log :status="log.vendors" content="创建 vendors.js"></log>
-                <log :status="log.router" content="创建路由配置文件 router.js"></log>
-                <log :status="log.i18n" content="创建多语言配置文件 locale.js" v-if="formValidate.i18n"></log>
+                <log :status="log.builds" content="创建 webpack 配置文件"></log>
+
+                <log :status="2" content="创建路由配置文件 router.js "></log>
+                <log :status="2" content="创建路由对应的页面文件 "></log>
+
                 <log :status="log.app" content="创建路由挂载根组件 app.vue"></log>
-                <log :status="log.template" content="创建首页模板 index.ejs"></log>
                 <log :status="log.indexHtml" content="创建首页 index.html"></log>
-                <!--<log :status="log.indexVue" content="创建首页组件 index.vue"></log>-->
                 <log :status="log.main" content="创建入口文件 main.js"></log>
-                <log :status="log.config" content="创建配置文件 config.js"></log>
-                <log :status="log.util" content="创建工具集文件 util.js"></log>
-                <!--<log :status="log.vuexStore" content="创建 vuex 文件 store.js" v-if="formValidate.store.indexOf('vuex') > -1"></log>-->
-                <!--<log :status="log.vuexActions" content="创建 vuex 文件 actions.js" v-if="formValidate.store.indexOf('vuex') > -1"></log>-->
-                <!--<log :status="log.vuexMutations" content="创建 vuex 文件 mutations.js" v-if="formValidate.store.indexOf('vuex') > -1"></log>-->
                 <log :status="log.bus" content="创建中央事件总线文件 bus.js" v-if="formValidate.store.indexOf('bus.js') > -1"></log>
-                <log :status="log.eslintRc" content="创建 ESLint 配置文件 .eslintrc.json" v-if="formValidate.eslint"></log>
-                <log :status="log.eslintIgnore" content="创建 ESLint 忽略文件 .eslintignore" v-if="formValidate.eslint"></log>
                 <log :status="log.gitignore" content="创建 .gitignore"></log>
                 <log :status="log.editorconfig" content="创建 .editorconfig"></log>
 
