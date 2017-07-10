@@ -9,18 +9,16 @@ const fs = require('fs');
 const createPackage = require('../src/services/package');
 const createBabel = require('../src/services/babel');
 const createVendors = require('../src/services/vendors');
-const createRouter = require('../src/services/router');
-const createI18n = require('../src/services/i18n');
 const createApp = require('../src/services/app');
 const createTemplate = require('../src/services/template');
-const createIndexVue = require('../src/services/index-vue');
 const createIndexHtml = require('../src/services/index-html');
 const createMain = require('../src/services/main');
 const createConfig = require('../src/services/config');
 const createUtil = require('../src/services/util');
-// const { createVuexStore, createVuexActions, createVuexMutations } = require('../src/services/vuex');
+
+
 const createBus = require('../src/services/bus');
-const { createESLintRc, createESLintIgnore } = require('../src/services/eslint');
+
 const createGitignore = require('../src/services/gitignore');
 const createEditorconfig = require('../src/services/editorconfig');
 const { create_router }= require('../src/services/create_router.js');
@@ -29,7 +27,7 @@ const { create_config }= require('../src/services/create_config.js');
 const { create_static }= require('../src/services/create_static.js');
 const { readme }= require('../src/services/readme.js');
 
-// console.log(create_router);
+
 let saveDirectory = undefined;
 
 Vue.component('log', {
@@ -257,32 +255,6 @@ const app = new Vue({
                                 this.log.vendors = 3;
                             }
                         });
-
-                        // router
-                        createRouter({
-                            data: this.formValidate,
-                            directory: saveDirectory,
-                            success: () => {
-                                this.log.router = 2;
-                            },
-                            error: () => {
-                                this.log.router = 3;
-                            }
-                        });
-
-                        // i18n
-                        if (this.formValidate.i18n) {
-                            createI18n({
-                                data: this.formValidate,
-                                directory: saveDirectory,
-                                success: () => {
-                                    this.log.i18n = 2;
-                                },
-                                error: () => {
-                                    this.log.i18n = 3;
-                                }
-                            });
-                        }
 
                         // app.vue
                         createApp({

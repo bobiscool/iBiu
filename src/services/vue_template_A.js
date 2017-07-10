@@ -89,9 +89,9 @@ exports.template = [
     
     <!--二级导航区域-->
     ${temUl}
+    <router-view></router-view>
      </div>
 
-<router-view></router-view>
   
 </template>
 
@@ -139,9 +139,10 @@ exports.template = [
     
     <!--二级导航区域-->
     ${temUl}
+    <router-view></router-view>
+
      </div>
 
-<router-view></router-view>
   
 </template>
 
@@ -181,9 +182,10 @@ exports.template = [
     
     <!--二级导航区域-->
     ${name}
+    <router-view></router-view>
+
      </div>
 
-<router-view></router-view>
   
 </template>
 
