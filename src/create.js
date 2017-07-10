@@ -171,13 +171,8 @@ const app = new Vue({
             for (let i in this.log) {
                 let item = this.log[i];
 
-                if (i === 'i18n' && !this.formValidate.i18n) continue;
-                if (i === 'vuexStore' && this.formValidate.store.indexOf('vuex') < 0) continue;
-                if (i === 'vuexActions' && this.formValidate.store.indexOf('vuex') < 0) continue;
-                if (i === 'vuexMutations' && this.formValidate.store.indexOf('vuex') < 0) continue;
                 if (i === 'bus' && this.formValidate.store.indexOf('bus') < 0) continue;
-                if (i === 'eslintRc' && !this.formValidate.eslintRc) continue;
-                if (i === 'eslintIgnore' && !this.formValidate.eslintRc) continue;
+
 
                 if (item === 1) {
                     status = 1;
