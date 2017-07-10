@@ -8,13 +8,11 @@ const shell = electron.shell;
 const fs = require('fs');
 const createPackage = require('../src/services/package');
 const createBabel = require('../src/services/babel');
-const createVendors = require('../src/services/vendors');
 const createApp = require('../src/services/app');
-const createTemplate = require('../src/services/template');
 const createIndexHtml = require('../src/services/index-html');
 const createMain = require('../src/services/main');
 const createConfig = require('../src/services/config');
-const createUtil = require('../src/services/util');
+
 
 
 const createBus = require('../src/services/bus');
@@ -92,16 +90,14 @@ const app = new Vue({
             css: [],
             ajax: true,
             jq:true,
-            i18n: false,
-            store: [],
+            store: "",
             chart: [],
-            eslint: true,
             funs: [],
             name: '',
             version: '1.0.0',
             desc: '',
             git: '',
-            navNeed:false,
+            navNeed:true,
 
             nav:`[
             {name:"一级导航1",
@@ -245,16 +241,7 @@ const app = new Vue({
 
 
                         // vendors
-                        createVendors({
-                            data: this.formValidate,
-                            directory: saveDirectory,
-                            success: () => {
-                                this.log.vendors = 2;
-                            },
-                            error: () => {
-                                this.log.vendors = 3;
-                            }
-                        });
+
 
                         // app.vue
                         createApp({
@@ -268,17 +255,7 @@ const app = new Vue({
                             }
                         });
 
-                        // index.ejs
-                        createTemplate({
-                            data: this.formValidate,
-                            directory: saveDirectory,
-                            success: () => {
-                                this.log.template = 2;
-                            },
-                            error: () => {
-                                this.log.template = 3;
-                            }
-                        });
+
 
                         // index.html
                         createIndexHtml({
@@ -292,17 +269,6 @@ const app = new Vue({
                             }
                         });
 
-                        // index.vue
-                        // createIndexVue({
-                        //     data: this.formValidate,
-                        //     directory: saveDirectory,
-                        //     success: () => {
-                        //         this.log.indexVue = 2;
-                        //     },
-                        //     error: () => {
-                        //         this.log.indexVue = 3;
-                        //     }
-                        // });
 
                         // main
                         createMain({
@@ -329,16 +295,6 @@ const app = new Vue({
                         });
 
                         // util.js
-                        createUtil({
-                            data: this.formValidate,
-                            directory: saveDirectory,
-                            success: () => {
-                                this.log.util = 2;
-                            },
-                            error: () => {
-                                this.log.util = 3;
-                            }
-                        });
 
                         // vuex
                         // if (this.formValidate.store.indexOf('vuex') > -1) {

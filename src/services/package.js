@@ -113,13 +113,10 @@ module.exports = function (opts) {
     }
 
     if (data.ajax) file.dependencies['axios'] = '^0.15.3';
-    if (data.i18n) file.dependencies['vue-i18n'] = '^5.0.3';
+
     if (data.store.indexOf('vuex') > -1)  file.dependencies['vuex'] = '^2.2.1';
     if (data.chart.indexOf('echarts') > -1) file.dependencies['echarts'] = '^3.4.0';
-    if (data.eslint) {
-        file.devDependencies['eslint'] = '^3.12.2';
-        file.devDependencies['eslint-plugin-html'] = '^1.7.0';
-    }
+
 
     if (data.funs.indexOf('cookies') > -1) file.dependencies['js-cookie'] = '^2.1.3';
     if (data.funs.indexOf('clipboard') > -1) file.dependencies['clipboard'] = '^1.5.12';

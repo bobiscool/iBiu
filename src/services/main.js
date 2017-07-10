@@ -57,6 +57,9 @@ new Vue({
         directory: `${opts.directory}/src`,
         fileName: 'main.js',
         data: file,
+        codeFormat: {
+            indent_size: 2
+        },
         success () {
             opts.success();
         },

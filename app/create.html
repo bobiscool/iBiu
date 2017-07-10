@@ -65,7 +65,7 @@
                     </Form-item>
                     <Form-item label="Ajax：" prop="ajax">
                         <div slot="label">
-                            <span>Ajax</span>
+                            <span>Axios</span>
                             <Tooltip content="基于 axios">
                                 <Icon type="ios-help" size="14" color="#3399ff"></Icon>
                             </Tooltip>
@@ -76,19 +76,7 @@
                             <Icon type="android-close" slot="close"></Icon>
                         </i-switch>
                     </Form-item>
-                    <Form-item label="多语言：" prop="i18n">
-                        <div slot="label">
-                            <span>多语言</span>
-                            <Tooltip content="基于 vue-i18n">
-                                <Icon type="ios-help" size="14" color="#3399ff"></Icon>
-                            </Tooltip>
-                            <span>：</span>
-                        </div>
-                        <i-switch v-model="formValidate.i18n">
-                            <Icon type="android-done" slot="open"></Icon>
-                            <Icon type="android-close" slot="close"></Icon>
-                        </i-switch>
-                    </Form-item>
+
                     <Form-item label="状态管理：" prop="store">
                         <Checkbox-group v-model="formValidate.store">
                             <Checkbox label="vuex"></Checkbox>
@@ -99,12 +87,6 @@
                         <Checkbox-group v-model="formValidate.chart">
                             <Checkbox label="echarts"></Checkbox>
                         </Checkbox-group>
-                    </Form-item>
-                    <Form-item label="ESLint：" prop="eslint">
-                        <i-switch v-model="formValidate.eslint">
-                            <Icon type="android-done" slot="open"></Icon>
-                            <Icon type="android-close" slot="close"></Icon>
-                        </i-switch>
                     </Form-item>
                     <Form-item label="附加功能：" prop="funs">
                         <Checkbox-group v-model="formValidate.funs">
