@@ -225,38 +225,33 @@ exports.routerTempalte = [
         var im = "";
         var im2 = "";
         for (var i in names) {
-            im += "\t import " + names[i] + " from './" + names[i] + ".js'; \n";
+            im += "import " + names[i] + " from './" + names[i] + ".js'; \n";
             im2 += names[i]+",\n";
         }
 
 
         return `
-        import Vue from 'vue';
-        import Router from 'vue-router';
-        import contend from 'views/index.vue'
+    import Vue from 'vue';
+    import Router from 'vue-router';
+    import contend from 'views/index.vue'
 
        
-        ${im}
+    ${im}
         
-        Vue.use(Router);
+    Vue.use(Router);
        
-        export default new Router({
+    export default new Router({
             mode:'history',
             routes: [
             {
                 path: '/',
                 name: 'home',
-                redirect:'/home',
+                redirect:'/${names[0]}',
                 component: contend,
                 children:[
-                    ${im2}
+                ${im2}
             ]
 
-            },
-        {
-            path:'*',
-            name:'404',
-            component:notFound
             }
         ]
     })
@@ -277,7 +272,7 @@ exports.routerTempalte = [
 
 
         return `
-       export default {
+  export default {
   path:"/${mainName}",
   meta:{requiresAuth:true},
   redirect:"/${mainName}/${childrens[0]}",
@@ -293,7 +288,7 @@ exports.routerTempalte = [
 
     }else {
         return `
-       export default {
+  export default {
   path:"/${mainName}",
   meta:{requiresAuth:true},
   component(resolve) {

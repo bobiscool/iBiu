@@ -11,7 +11,7 @@ const createBabel = require('../src/services/babel');
 const createApp = require('../src/services/app');
 const createIndexHtml = require('../src/services/index-html');
 const createMain = require('../src/services/main');
-const createConfig = require('../src/services/config');
+// const createConfig = require('../src/services/config');
 
 
 
@@ -90,7 +90,7 @@ const app = new Vue({
             css: [],
             ajax: true,
             jq:true,
-            store: "",
+            store: [],
             chart: [],
             funs: [],
             name: '',
@@ -267,22 +267,6 @@ const app = new Vue({
                                 this.log.main = 3;
                             }
                         });
-
-                        // config.js
-                        createConfig({
-                            data: this.formValidate,
-                            directory: saveDirectory,
-                            success: () => {
-                                this.log.config = 2;
-                            },
-                            error: () => {
-                                this.log.config = 3;
-                            }
-                        });
-
-                        // util.js
-
-
 
                         // bus.js
                         if (this.formValidate.store.indexOf('bus.js') > -1) {
