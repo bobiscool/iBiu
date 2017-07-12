@@ -2,7 +2,6 @@
  * Created by mac WuYiPing on 17/6/8.
  */
 
-
 /*现在只写到三级目录 以及导航*/
 exports.template = [
 
@@ -19,17 +18,20 @@ exports.template = [
 
         return `
         <template>
-    <div class="content">
-    
-    <!--一级导航区域-->
-    <div class="topTitle">${temUl}</div>
+      <div class="main_container">
 
-    
-    <router-view></router-view>
+        <header class="header">
+            <div class="logo"> </div>
+            <ul>
+               ${temUl}
+            </ul>
+        </header>
+
+
+            <router-view></router-view>
 
      </div>
 
-  
 </template>
 
 <script type="text/ecmascript-6">
@@ -84,15 +86,21 @@ exports.template = [
 
 
         return `
-        <template>
-    <div class="leftSide">
-    
-    <!--二级导航区域-->
-    ${temUl}
-    <router-view></router-view>
-     </div>
+<template>
+            <div class="body">
 
-  
+            <div class="left_col ">
+    
+    <!--一级导航区域-->
+    <div class="left_link">
+     ${temUl}
+    </div>
+
+     </div>
+                
+                <router-view></router-view>
+
+            </div>
 </template>
 
 <script type="text/ecmascript-6">

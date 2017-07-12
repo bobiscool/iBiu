@@ -11,7 +11,7 @@ const createBabel = require('../src/services/babel');
 const createApp = require('../src/services/app');
 const createIndexHtml = require('../src/services/index-html');
 const createMain = require('../src/services/main');
-// const createConfig = require('../src/services/config');
+const { createCss }= require('../src/services/css');
 
 
 
@@ -226,9 +226,6 @@ const app = new Vue({
                         });
 
 
-                        // vendors
-
-
                         // app.vue
                         createApp({
                             data: this.formValidate,
@@ -349,6 +346,20 @@ const app = new Vue({
                                 this.log.static = 3;
                             }
                         });
+
+                        //创建css
+                        createCss(
+                            {
+                                data: this.formValidate,
+                                directory: saveDirectory,
+                                success: () => {
+                                    // this.log.babel = 2;
+                                },
+                                error: () => {
+                                    // this.log.babel = 3;
+                                }
+                            }
+                        );
                        //readme
                         readme({
                             directory: saveDirectory,

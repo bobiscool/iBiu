@@ -5,7 +5,7 @@
 const writeFile = require('./write-file')
 
 
-exports.createCss = function () {
+exports.createCss = function (opts) {
     let file= `
  html,body {
   margin:0;
@@ -144,7 +144,7 @@ table {
   }
 }`;
     writeFile({
-        directory: `${opts.directory}/src/css`,
+        directory: `${opts.directory}/static/css`,
         fileName:'main.css',
         data: file,
         success () {

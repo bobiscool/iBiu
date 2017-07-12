@@ -3,9 +3,7 @@ const writeFile = require('./write-file');
 module.exports = function (opts) {
     const file = `
 <template>
-    <div>
         <router-view></router-view>
-    </div>
 </template>
 <script>
     export default {

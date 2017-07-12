@@ -3,6 +3,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const beauty = require('js-beautify').js_beautify;
 const { template,routerTempalte } = require("./vue_template_A.js");
 var paths = []
 
@@ -253,9 +254,9 @@ function generateRoutejs(location,data) {
 
     console.log(namesShort);
     fs.mkdir(`${location}`+'/router');
-    fs.writeFile(`${location}/router/index.js`,routerTempalte[0](namesShort));
+    fs.writeFile(`${location}/router/index.js`,beauty(routerTempalte[0](namesShort)));
     for(var i in namesShort){
-        fs.writeFile(`${location}/router/${namesShort[i]}.js`,routerTempalte[1](namesShort[i],getChildrenShort(data[names[i]])));
+        fs.writeFile(`${location}/router/${namesShort[i]}.js`,beauty(routerTempalte[1](namesShort[i],getChildrenShort(data[names[i]]))));
     }
 }
 
