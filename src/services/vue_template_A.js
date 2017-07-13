@@ -280,9 +280,26 @@ exports.routerTempalte = [
 
 
 
-        for(var i in childrens){
-            temChild+=" {\n      path:\"/" + mainName + "/" + childrens[i] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/index.vue'));\n        })\n      }\n    }\n";
+        for(let i in childrens){
+
+            // 拼接三级导航
+            var $CsC ="";
+            if(_childrens[childrens[i]]&&_childrens[childrens[i]].length>0) {
+                for (let j in _childrens[childrens[i]]) {
+                    $CsC += " {\n      path:\"/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "/index.vue'));\n        })\n      }\n    }\n";
+
+                    console.log($CsC);
+                }
+            }
+
+            // console.log(_childrens[i]&&_childrens[childrens[i]].length>0);
+           //拼接二级导航
+            temChild+=" {\n      path:\"/" + mainName + "/" + childrens[i] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/index.vue'));\n        })\n " +"children:[\n"+$CsC+"];\n"+
+                "     }\n    }\n";
         }
+
+
+        console.log(temChild);
 
 
         return `
