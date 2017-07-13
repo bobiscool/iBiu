@@ -245,18 +245,29 @@ function generateDir(data,pre_dir) {
 * */
 
 
+
 function generateRoutejs(location,data) {
     var names =getChildren(data);
     var namesShort = [];
     names.forEach(function (val) {
         namesShort.push(getShort(val));
     });
-
-    console.log(namesShort);
+    console.log('data');
+    console.log(data);
     fs.mkdir(`${location}`+'/router');
     fs.writeFile(`${location}/router/index.js`,beauty(routerTempalte[0](namesShort)));
     for(var i in namesShort){
-        fs.writeFile(`${location}/router/${namesShort[i]}.js`,beauty(routerTempalte[1](namesShort[i],getChildrenShort(data[names[i]]))));
+        // 产生三级
+        let _names = getChildren(data[names[i]]);
+        let __CsC = {};
+        _names.forEach(function (val) {
+            __CsC[getShort(val)] = getChildrenShort(data[names[i]][val])
+        });
+
+
+        console.log(__CsC);
+
+        fs.writeFile(`${location}/router/${namesShort[i]}.js`,beauty(routerTempalte[1](namesShort[i],getChildrenShort(data[names[i]]),__CsC)));
     }
 }
 
@@ -278,3 +289,4 @@ exports.create_router = function (location,navData) {
     eval(c);
     // console.log(c);
 }
+

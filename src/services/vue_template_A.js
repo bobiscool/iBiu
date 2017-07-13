@@ -89,9 +89,12 @@ exports.template = [
 <template>
             <div class="body">
 
+      <div class="leftBoard">
+         
+      </div>
             <div class="left_col ">
     
-    <!--一级导航区域-->
+    <!--二级导航-->
     <div class="left_link">
      ${temUl}
     </div>
@@ -266,13 +269,16 @@ exports.routerTempalte = [
    
         `
     },
-    function (mainName,childrens) {
-
+    function (mainName,childrens,_childrens) {
+    console.log('Sam级导航');
+    console.log(_childrens);
     var temChild = ""
 
 
 
     if(childrens.length>=0){
+
+
 
         for(var i in childrens){
             temChild+=" {\n      path:\"/" + mainName + "/" + childrens[i] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/index.vue'));\n        })\n      }\n    }\n";
