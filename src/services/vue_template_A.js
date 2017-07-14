@@ -89,15 +89,16 @@ exports.template = [
 <template>
             <div class="body">
 
-      <div class="leftBoard">
-         
-      </div>
-            <div class="left_col ">
-    
-    <!--二级导航-->
+        <div class="left_col ">
+
+    <!--一级导航区域-->
     <div class="left_link">
-     ${temUl}
-    </div>
+
+      <div class="leftBoard">
+
+      </div>
+   ${temUl}
+  </div>
 
      </div>
                 
@@ -138,20 +139,25 @@ exports.template = [
     function (names) {
         var temString = "";
         for (var i in names) {
-            temString += "<li><router-link to='" + names[i].src + "'>" + names[i].text + "</router-link></li>"
+            temString += "<li class='breadcrumb-item'><router-link to='" + names[i].src + "'>" + names[i].text + "</router-link></li>"
         }
 
-        var temUl = "<ul>" + temString + "</ul>";
+        // var temUl = "<ul>" + temString + "</ul>";
 
 
         return `
         <template>
-    <div class="rightSide">
-    
-    <!--二级导航区域-->
-    ${temUl}
-    <router-view></router-view>
+  <div class="main">
 
+    <ol class="breadcrumb">
+
+      <!--<li class="breadcrumb-item">-->
+      <!--<router-link to='first1/sec1/third1'>三级导航</router-link>-->
+      <!--</li>-->
+      ${temString}
+  </ol>
+
+    <router-view></router-view>
      </div>
 
   
@@ -189,11 +195,10 @@ exports.template = [
 
         return `
         <template>
-    <div class="center_content">
-    
+        <div class="container">
+
     <!--二级导航区域-->
-    ${name}
-    <router-view></router-view>
+         ${name}
 
      </div>
 
@@ -288,7 +293,7 @@ exports.routerTempalte = [
                 for (let j in _childrens[childrens[i]]) {
                     $CsC += " {\n      path:\"/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "/index.vue'));\n        })\n      }\n    }\n";
 
-                    console.log($CsC);
+                    // console.log($CsC);
                 }
             }
 
