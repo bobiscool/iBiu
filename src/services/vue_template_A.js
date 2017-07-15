@@ -21,10 +21,21 @@ exports.template = [
       <div class="main_container">
 
         <header class="header">
-            <div class="logo"> </div>
+            <div class="logo"> 
+                  <span class="logo-items"></span>
+                <span class="title"><span>i</span><span>Biu</span></span>
+            </div>
             <ul>
                ${temUl}
             </ul>
+            <div class="user-area">
+              <span class="bell">
+                <span class="alarm">20</span>
+              </span>
+              <span class="detail"></span>
+                   <div class="favico"></div>
+                   <span class="name"><span>admin</span><i></i></span>
+            </div>
         </header>
 
 
@@ -94,8 +105,10 @@ exports.template = [
     <!--一级导航区域-->
     <div class="left_link">
 
-      <div class="leftBoard">
-
+       <div class="leftBoard">
+      <span class="icon"></span>
+      <span class='sideTitle'>Sidebars</span>
+      <span class='info'>new</span>
       </div>
    ${temUl}
   </div>

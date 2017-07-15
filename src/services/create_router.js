@@ -196,14 +196,26 @@ function generateDir(data,pre_dir) {
 
                    console.log(pre_dir);
                    fs.mkdirSync(pre_dir+'/'+tem.short);//当前目录
-                   fs.writeFile(`${pre_dir}/${tem.short}/index.vue`,
-                       template[getDeep(pre_dir).length]
-                       (splitShortAll(getChildren(data[i]),pre_dir+'/'+tem.short))
-                       ,function (err) {
-                   if(err){ console.log('error')}//生成文件
-                   })
+                   if(tem.short!=="views"){
+                       fs.writeFile(`${pre_dir}/${tem.short}/index.vue`,
+                           template[getDeep(pre_dir).length+1]
+                           (splitShortAll(getChildren(data[i]),pre_dir+'/'+tem.short))
+                           ,function (err) {
+                               if(err){ console.log('error')}//生成文件
+                           })
+                   }else{
+                       fs.writeFile(`${pre_dir}/${tem.short}/index.vue`,
+                           template[getDeep(pre_dir).length]
+                           (splitShortAll(getChildren(data[i]),pre_dir+'/'+tem.short))
+                           ,function (err) {
+                               if(err){ console.log('error')}//生成文件
+                           })
+                   }
+
 
                }else {
+                   // console.log("没有这个目录 创建目录");
+                   // console.log(tem.short);
                    fs.mkdirSync(tem.short);
                    fs.writeFile(`${tem.short}/index.vue`,template[getDeep(pre_dir).length](getChildren(data[i])),function (err) {
                        if(err){ console.log('error')}
