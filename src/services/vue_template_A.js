@@ -312,8 +312,7 @@ exports.routerTempalte = [
 
             // console.log(_childrens[i]&&_childrens[childrens[i]].length>0);
            //拼接二级导航
-            temChild+=" {\n      path:\"/" + mainName + "/" + childrens[i] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/index.vue'));\n        })\n " +"children:[\n"+$CsC+"];\n"+
-                "     }\n    }\n";
+            temChild+=" {\n      path:\"/" + mainName + "/" + childrens[i] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/index.vue'));\n        })\n   }\n, "+"children:[\n"+$CsC+"]\n"+"   }\n";
         }
 
 
