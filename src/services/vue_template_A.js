@@ -9,7 +9,7 @@ exports.template = [
         //一级导航
         var temString = "";
         for (var i in names) {
-            temString += "<li><router-link to='" + names[i].src + "'>" + names[i].text + "</router-link></li>"
+            temString += "<li><router-link to='/" + names[i].src + "'>" + names[i].text + "</router-link></li>"
         }
 
         console.log(names);
@@ -90,7 +90,7 @@ exports.template = [
     function (names) {
         var temString = "";
         for (var i in names) {
-            temString += "<li><router-link to='" + names[i].src + "'>" + names[i].text + "</router-link></li>"
+            temString += "<li><router-link to='/" + names[i].src + "'>" + names[i].text + "</router-link></li>"
         }
 
         var temUl = "<ul>" + temString + "</ul>";
@@ -152,7 +152,7 @@ exports.template = [
     function (names) {
         var temString = "";
         for (var i in names) {
-            temString += "<li class='breadcrumb-item'><router-link to='" + names[i].src + "'>" + names[i].text + "</router-link></li>"
+            temString += "<li class='breadcrumb-item'><router-link to='/" + names[i].src + "'>" + names[i].text + "</router-link></li>"
         }
 
         // var temUl = "<ul>" + temString + "</ul>";
