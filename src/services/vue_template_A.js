@@ -9,7 +9,7 @@ exports.template = [
         //一级导航
         var temString = "";
         for (var i in names) {
-            temString += "<li><router-link to='/" + names[i].src + "'>" + names[i].text + "</router-link></li>"
+            temString += "<li><router-link to='" + names[i].src + "'>" + names[i].text + "</router-link></li>"
         }
 
         console.log(names);
@@ -210,8 +210,23 @@ exports.template = [
         <template>
         <div class="container">
 
-    <!--二级导航区域-->
-         ${name}
+    <!--四级页面区域-->
+                  <div class="demo">
+
+<div class="info-board">
+   <div class="info-board__items">
+      <div class="box color1"></div>
+   </div>
+   <div class="info-board__items">
+  <div class="box color2"></div>
+   </div>
+   <div class="info-board__items">
+  <div class="box color3"></div>
+   </div>
+   <div class="info-board__items">
+  <div class="box color4"></div>
+   </div>
+</div>
 
      </div>
 
@@ -290,7 +305,8 @@ exports.routerTempalte = [
     function (mainName,childrens,_childrens) {
     console.log('Sam级导航');
     console.log(_childrens);
-    var temChild = ""
+    var temChild = "";
+    let temThirdRdirect =[];
 
 
 
@@ -299,20 +315,20 @@ exports.routerTempalte = [
 
 
         for(let i in childrens){
-
             // 拼接三级导航
             var $CsC ="";
             if(_childrens[childrens[i]]&&_childrens[childrens[i]].length>0) {
                 for (let j in _childrens[childrens[i]]) {
                     $CsC += " {\n      path:\"/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "/index.vue'));\n        })\n      }\n    }\n";
 
+                    temThirdRdirect.push("/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j]); //收集三级链接 用于redirect
                     // console.log($CsC);
                 }
             }
 
             // console.log(_childrens[i]&&_childrens[childrens[i]].length>0);
            //拼接二级导航
-            temChild+=" {\n      path:\"/" + mainName + "/" + childrens[i] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/index.vue'));\n        })\n   }\n, "+"children:[\n"+$CsC+"]\n"+"   }\n";
+            temChild+=" {\n      path:\"/" + mainName + "/" + childrens[i] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/index.vue'));\n        })\n   }\n, "+"redirect:'"+temThirdRdirect[0]+"',\n"+"children:[\n"+$CsC+"]\n"+"   }\n";
         }
 
 
