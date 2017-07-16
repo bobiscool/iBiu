@@ -12,6 +12,7 @@ const createApp = require('../src/services/app');
 const createIndexHtml = require('../src/services/index-html');
 const createMain = require('../src/services/main');
 const { createCss }= require('../src/services/css');
+const { create_login }= require('../src/services/create_login');
 
 
 
@@ -368,6 +369,16 @@ const app = new Vue({
                             },
                             error: () => {
                                 this.log.readme = 3;
+                            }
+                        });
+                        //创建 login
+                        create_login({
+                            directory: saveDirectory,
+                            success: () => {
+                                // this.log.readme = 2;
+                            },
+                            error: () => {
+                                // this.log.readme = 3;
                             }
                         })
 

@@ -278,6 +278,8 @@ exports.routerTempalte = [
     import Vue from 'vue';
     import Router from 'vue-router';
     import contend from 'views/index.vue'
+    import login from 'views/login.vue'
+
 
        
     ${im}
@@ -296,6 +298,11 @@ exports.routerTempalte = [
                 ${im2}
             ]
 
+            },
+            {
+               path: '/login',
+               name: 'login',
+               component: login
             }
         ]
     })

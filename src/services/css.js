@@ -25,6 +25,30 @@ ol {
     margin-top: 0;
 }
 
+input, button, submit { border:none; }
+
+  input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    background: #f2f2f2;
+  }
+  input::-moz-placeholder { /* Firefox 19+ */
+    background: #f2f2f2;
+  }
+  input:-ms-input-placeholder { /* IE 10+ */
+    background: #f2f2f2;
+  }
+  input:-moz-placeholder { /* Firefox 18- */
+    background: #f2f2f2;
+  }
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
 html,
 body {
     margin: 0;
@@ -362,6 +386,81 @@ background: #20a8d8;
   border-radius: 5px;
   margin-bottom: 20px;
 }
+
+.login {
+background: #63c2de;
+width: 100%;
+height: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+.login-form{
+  width:400px;
+  /*height: 250px;*/
+  box-sizing: border-box;
+  padding: 45px;
+  padding-top: 20px;
+  background: #fff;
+  border-radius: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*box-shadow:1px 1px 20px 1px rgba(0,0,0,0.2);*/
+}
+
+
+.login-form input {
+  font-family: "Microsoft YaHei";
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.login-form button {
+  font-family: "Microsoft YaHei";
+  color: #f2f2f2;
+  text-transform: uppercase;
+  outline: 0;
+  background: #63c2de;
+  width: 100%;
+  /*border-radius: 5px;*/
+  padding:15px;
+  font-size: 16px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor:pointer;
+}
+
+  .login-form button:hover,.login-form button:active,.login-form button:focus {
+    background: #20a8d8;
+  }
+
+
+  .login-form input:-webkit-autofill{
+    background: #f2f2f2!important;
+  }
+
+
+.login-logo {
+  width:100px;
+  height: 115px;
+  background: url("http://7o50ww.com1.z0.glb.clouddn.com/ibiu.svg");
+  margin-bottom: 10px;
+}
+
 
 `;
     writeFile({
