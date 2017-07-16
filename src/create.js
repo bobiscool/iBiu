@@ -13,6 +13,7 @@ const createIndexHtml = require('../src/services/index-html');
 const createMain = require('../src/services/main');
 const { createCss }= require('../src/services/css');
 const { create_login }= require('../src/services/create_login');
+const { create_404 }= require('../src/services/create_404');
 
 
 
@@ -380,7 +381,18 @@ const app = new Vue({
                             error: () => {
                                 // this.log.readme = 3;
                             }
+                        });
+                        //创建 404
+                        create_404({
+                            directory: saveDirectory,
+                            success: () => {
+                                // this.log.readme = 2;
+                            },
+                            error: () => {
+                                // this.log.readme = 3;
+                            }
                         })
+
 
                     }
                 }

@@ -466,13 +466,15 @@ height: 100%;
   width:100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items:center;
   justify-content: center;
   color: #ffffff;
   background: #000000;
   font-size: 40px;
 }
  .notFound span {
+    display:inline-block;
     -webkit-animation-name: haha;
     -moz-animation-name: haha;
     -o-animation-name: haha;

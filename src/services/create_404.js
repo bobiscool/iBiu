@@ -3,7 +3,7 @@
  */
 const writeFile = require('./write-file')
 
-exports.create_login = function (opts) {
+exports.create_404 = function (opts) {
 
     var notF = `
 

@@ -34,7 +34,7 @@ exports.template = [
               </span>
               <span class="detail"></span>
                    <div class="favico"></div>
-                   <span class="name"><span>admin</span><i></i></span>
+                   <span class="name"><span><router-link to="/login">admin</router-link></span><i></i></span>
             </div>
         </header>
 
@@ -227,9 +227,12 @@ exports.template = [
   <div class="box color4"></div>
    </div>
 </div>
+<div class="chart">
+
+</div>
 
      </div>
-
+</div>
   
 </template>
 
@@ -306,7 +309,7 @@ exports.routerTempalte = [
                component: login
             },
             {
-              path:*,
+              path:'*',
               name:'404',
               component: notF
             }
