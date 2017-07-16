@@ -279,6 +279,7 @@ exports.routerTempalte = [
     import Router from 'vue-router';
     import contend from 'views/index.vue'
     import login from 'views/login.vue'
+    import notF from 'views/404.vue'
 
 
        
@@ -303,6 +304,11 @@ exports.routerTempalte = [
                path: '/login',
                name: 'login',
                component: login
+            },
+            {
+              path:*,
+              name:'404',
+              component: notF
             }
         ]
     })

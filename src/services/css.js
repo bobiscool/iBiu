@@ -462,6 +462,48 @@ height: 100%;
 }
 
 
+.notFound {
+  width:100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #ffffff;
+  background: #000000;
+  font-size: 40px;
+}
+ .notFound span {
+    -webkit-animation-name: haha;
+    -moz-animation-name: haha;
+    -o-animation-name: haha;
+    animation-name: haha;
+    animation-duration: 9000ms;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes haha {
+    0% {
+      transform: rotateZ(0);
+    }
+
+
+    25% {
+      transform: rotateZ(45deg);
+    }
+
+
+    75% {
+      transform: rotateZ(-45deg);
+    }
+
+
+    100% {
+      transform: rotateZ(0deg);
+    }
+  }
+
+
+
 `;
     writeFile({
         directory: `${opts.directory}/static/css`,
