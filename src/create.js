@@ -305,12 +305,14 @@ const app = new Vue({
                         create_static({
                             directory: saveDirectory,
                             success: () => {
-                                this.log.static = 2;
+                                // this.log.static = 2;
                             },
                             error: () => {
-                                this.log.static = 3;
+                                // this.log.static = 3;
                             }
                         });
+
+                        this.log.static = 2;
 
 
 

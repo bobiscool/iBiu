@@ -41,12 +41,12 @@
 
                             <i-switch v-model="formValidate.navNeed" :disabled="true"></i-switch>
                     </Form-item>
-                    <Form-item label="填写你的导航树：(请按示例格式填写)" v-if="formValidate.navNeed">
+                    <Form-item label="页面路由结构:" v-if="formValidate.navNeed">
 
                         <div class="nav" >
                             <!--<textarea  ></textarea>-->
                             <textarea name="textarea"
-                                      rows="10" cols="50" v-model="formValidate.nav"
+                                      rows="10" cols="35" v-model="formValidate.nav"
                                       style="border: 1px solid #39f;line-height: 20px;"
 
                             ></textarea>
@@ -164,17 +164,17 @@
                 <h4>启动服务（开发环境）</h4>
                 <code>$ npm run dev</code>
                 <p>
-                    服务启动后，打开 <a href="javascript:void(0)" @click="handleOpenLink('http://127.0.0.1:8080')">http://localhost:8080</a> 访问网站
+                    服务启动后，打开 <a href="javascript:void(0)" @click="handleOpenLink('http://localhost:8080')">http://localhost:8080</a> 访问网站
                 </p>
                 <p></p>
                 <h4>编译打包（生产环境）</h4>
                 <code>$ npm run build</code>
                 <template v-if="formValidate.ajax">
                     <h4>配置 路由</h4>
-                    <p>iBiu已经根据你的json给你配置好了路由，位置就在 <a href="javascript:void(0)" @click="handleOpenFile('src/libs/util.js')">views/src/router</a> 里，点击文件修改具体配置。</p>
+                    <p>iBiu已经根据你的json给你配置好了路由，位置就在 <a href="javascript:void(0)" @click="handleOpenFile('src/router/index.js')">views/src/router</a> 里，点击文件修改具体配置。</p>
                 </template>
                 <h4>自定义页面</h4>
-                <p>iBiu根据你的配置文件,生成了相关目录以及相关页面,并将路由指向了它们<a href="javascript:void(0)" @click="handleOpenFile('src/template/index.ejs')">点击查看 </a> 文件</p>
+                <p>iBiu根据你的配置文件,生成了相关目录以及相关页面,并将路由指向了它们<a href="javascript:void(0)" @click="handleOpenFile('src/views/index.vue')">点击查看 </a> 文件</p>
                 <template v-if="formValidate.eslint">
                     <h4>ESLint</h4>
                     <p>使用 ESLint 来检测代码是否符合规范：</p>

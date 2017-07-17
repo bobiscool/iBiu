@@ -2,7 +2,7 @@ const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
 const url = require('url');
 
-let logo = path.join(__dirname, 'assets/img/logo.png');
+let logo = path.join(__dirname, 'assets/img/ibiu.png');
 let win = null;
 let win_about = null;
 
@@ -10,12 +10,12 @@ let willClose = false;
 
 function createWindow () {
     win = new BrowserWindow({
-        width: 360,
+        width: 380,
         // width: 1000,
-        height: 572,
+        height: 650,
         title: 'iBiu',
         center: true,
-        // resizable: false,
+        resizable: false,
         icon: logo,
         titleBarStyle: 'hidden'
     });
