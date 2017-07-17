@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-    <title>iView</title>
+    <title>iBiu</title>
     <link rel="stylesheet" href="../assets/css/iview.css">
     <link rel="stylesheet" href="../assets/css/app.css">
 </head>
@@ -15,8 +15,7 @@
                 <i-col span="24">
                     <div class="home-logo"></div>
                     <div class="home-name">
-                        <!--<span>i</span>-->
-                        <!--<span>Biu</span>-->
+
                     </div>
                     <div class="home-desc">Build Vue spa faster</div>
                     <Row class="home-menu" :gutter="32">
@@ -24,25 +23,16 @@
                             <i-button type="ghost" long icon="ios-plus-empty" @click="handleCreateApp">新建工程</i-button>
                         </i-col>
                         <i-col span="9">
-                            <i-button type="ghost" long icon="ios-keypad" @click="handleOpenDoc">离线文档</i-button>
+                            <i-button type="ghost" long icon="ios-keypad" @click="handleOpenDoc">在线文档</i-button>
                         </i-col>
                     </Row>
                 </i-col>
             </Row>
             <div class="home-version">
-                当前 iView 版本：<a href="javascript:void(0)" @click="checkUpdate(true)">2.0.0-rc.13</a>
+               Inspired By <a href="https://www.iviewui.com/">iView</a>
             </div>
         </div>
-        <Modal
-            v-model="showUpdate"
-            title="发现新版本"
-            ok-text="下载"
-            @on-ok="handleOk"
-            @on-cancel="handleCancel"
-            width="200">
-            <p>更新内容：</p>
-            <ul v-html="update.desc"></ul>
-        </Modal>
+
     </div>
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
     <script type="text/javascript" src="../assets/js/iview.min.js"></script>

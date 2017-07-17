@@ -162,7 +162,10 @@ const app = new Vue({
             main: 1,
             bus: 1,
             gitignore: 1,
-            editorconfig: 1
+            editorconfig: 1,
+            login:1,
+            css:1,
+            notFound:1
         },
         temName:"",
         temShort:""
@@ -355,10 +358,10 @@ const app = new Vue({
                                 data: this.formValidate,
                                 directory: saveDirectory,
                                 success: () => {
-                                    // this.log.babel = 2;
+                                    this.log.css = 2;
                                 },
                                 error: () => {
-                                    // this.log.babel = 3;
+                                    this.log.css = 3;
                                 }
                             }
                         );
@@ -376,23 +379,24 @@ const app = new Vue({
                         create_login({
                             directory: saveDirectory,
                             success: () => {
-                                // this.log.readme = 2;
+                                this.log.login = 2;
                             },
                             error: () => {
-                                // this.log.readme = 3;
+                                this.log.login = 3;
                             }
                         });
                         //创建 404
                         create_404({
                             directory: saveDirectory,
                             success: () => {
-                                // this.log.readme = 2;
+                                this.log.notFound = 2;
                             },
                             error: () => {
-                                // this.log.readme = 3;
+                                this.log.notFound = 3;
                             }
                         })
 
+                        console.log(this.log);
 
                     }
                 }

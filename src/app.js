@@ -20,38 +20,11 @@ const app = new Vue({
             window.location.href = 'create.html';
         },
         handleOpenDoc () {
-            this.isHidden = true;
+            // this.isHidden = true;
             setTimeout(() => {
-                window.location.href = 'index_prod.html';
-                win.setResizable(true);
-                win.maximize();
+                window.open("http://www.baidu.com");
+
             }, 100);
-        },
-        // 检查更新
-        checkUpdate (constraint = false) {
-            let msg = null;
-            if (constraint) {
-                msg = this.$Message.loading('正在检查更新...', 0);
-            }
-            axios.get('https://raw.githubusercontent.com/iview/iview-cli/master/package.json?' + Date.parse(new Date()))
-                .then((response) => {
-                    const data = response.data;
-                    if (data.update.version > this.version) {
-                        msg();
-                        this.update = data.update;
-                        this.showUpdate = true;
-                    } else {
-                        if (constraint) {
-                            setTimeout(() => {
-                                msg();
-                                this.$Modal.info({
-                                    title: '检查更新',
-                                    content: '当前已是最新版本。'
-                                })
-                            }, 2000);
-                        }
-                    }
-                })
         },
         handleOk () {
             if (process.platform === 'darwin') {
@@ -65,6 +38,5 @@ const app = new Vue({
         }
     },
     mounted () {
-        this.checkUpdate();
     }
 });

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-    <title>iView</title>
+    <title>iBiu</title>
     <link rel="stylesheet" href="../assets/css/iview.css">
     <link rel="stylesheet" href="../assets/css/app.css">
 </head>
@@ -11,24 +11,24 @@
     <div id="app" v-cloak>
         <div class="title" v-show="status === 'options'">新建项目</div>
         <div class="title" v-show="status === 'log' && titleStatus === 1">
-            iView - 创建中
+            iBiu - 创建中
             <Icon type="load-c" class="ivu-load-loop"></Icon>
         </div>
         <div class="title" v-show="status === 'log' && titleStatus === 2">
-            iView - 创建完成
+            iBiu - 创建完成
             <Icon type="ios-checkmark-outline" color="#00cc66"></Icon>
         </div>
         <div class="title" v-show="status === 'log' && titleStatus === 3">
-            iView - 创建失败
+            iBiu - 创建失败
             <Icon type="ios-close-outline"  color="#ff5500"></Icon>
         </div>
-        <div class="title" v-show="status === 'next'">iView - 进一步配置</div>
+        <div class="title" v-show="status === 'next'">iBiu - 进一步配置</div>
         <div class="create-app">
             <div class="create-form" v-show="status === 'options'">
                 <i-form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="120">
                     <Form-item label="你要组件库吗：" prop="ui">
                         <Radio-group v-model="formValidate.ui">
-                            <Radio label="iview">iview</Radio>
+                            <Radio label="iview">iView</Radio>
                             <Radio label="elementUI">elementUI</Radio>
                             <Radio label="none">裸奔！</Radio>
                         </Radio-group>
@@ -39,7 +39,7 @@
                     <!-- TODO: 添加 导航 -->
                     <Form-item label="是否需要导航">
 
-                            <i-switch v-model="formValidate.navNeed" ></i-switch>
+                            <i-switch v-model="formValidate.navNeed" :disabled="true"></i-switch>
                     </Form-item>
                     <Form-item label="填写你的导航树：(请按示例格式填写)" v-if="formValidate.navNeed">
 
@@ -129,11 +129,14 @@
                 <log :status="log.babel" content="创建 .babelrc"></log>
                 <log :status="log.builds" content="创建 webpack 配置文件"></log>
 
-                <log :status="2" content="创建路由配置文件 router.js "></log>
-                <log :status="2" content="创建路由对应的页面文件 "></log>
+                <log :status="2" content="创建 路由配置文件 router.js "></log>
+                <log :status="2" content="创建 路由对应的页面文件 "></log>
+                <log :status="log.login" content="创建 登录页面"></log>
+                <log :status="log.css" content="初始化 样式文件"></log>
+                <log :status="log.notFound" content="创建 404页面"></log>
 
-                <log :status="log.app" content="创建路由挂载根组件 app.vue"></log>
-                <log :status="log.indexHtml" content="创建首页 index.html"></log>
+                <log :status="log.app" content="创建 路由挂载根组件 app.vue"></log>
+                <log :status="log.indexHtml" content="创建 挂载页面index.html"></log>
                 <log :status="log.main" content="创建入口文件 main.js"></log>
                 <log :status="log.bus" content="创建中央事件总线文件 bus.js" v-if="formValidate.store.indexOf('bus.js') > -1"></log>
                 <log :status="log.gitignore" content="创建 .gitignore"></log>
@@ -152,7 +155,7 @@
                 <Alert show-icon>
                     <Icon type="ios-lightbulb-outline" slot="icon"></Icon>
                     <span slot="desc">
-                        iView Cli 已将所有配置文件保存在指定的<a href="javascript:void(0)" @click="handleOpenDirectory">目录</a>，按照下面的流程可以启动项目。对于一些定制内容，可以进一步配置。
+                        iBiu已将所有配置文件保存在指定的<a href="javascript:void(0)" @click="handleOpenDirectory">目录</a>，按照下面的流程可以启动项目。
                     </span>
                 </Alert>
                 <Alert>请预先全局安装 Node.js、npm 、webpack。</Alert>
@@ -161,21 +164,17 @@
                 <h4>启动服务（开发环境）</h4>
                 <code>$ npm run dev</code>
                 <p>
-                    服务启动后，打开 <a href="javascript:void(0)" @click="handleOpenLink('http://127.0.0.1:8080')">http://127.0.0.1:8080</a> 访问网站
+                    服务启动后，打开 <a href="javascript:void(0)" @click="handleOpenLink('http://127.0.0.1:8080')">http://localhost:8080</a> 访问网站
                 </p>
                 <p></p>
                 <h4>编译打包（生产环境）</h4>
                 <code>$ npm run build</code>
                 <template v-if="formValidate.ajax">
-                    <h4>配置 Ajax</h4>
-                    <p>iView 使用 <strong>axios</strong> 完成 Ajax 请求，并且将其封装在了 <a href="javascript:void(0)" @click="handleOpenFile('src/libs/util.js')">src/libs/util.js</a> 里，点击文件修改具体配置。</p>
+                    <h4>配置 路由</h4>
+                    <p>iBiu已经根据你的json给你配置好了路由，位置就在 <a href="javascript:void(0)" @click="handleOpenFile('src/libs/util.js')">views/src/router</a> 里，点击文件修改具体配置。</p>
                 </template>
-                <h4>修改 html 模板</h4>
-                <p>修改 <a href="javascript:void(0)" @click="handleOpenFile('src/template/index.ejs')">src/template/index.ejs</a> 文件，使用 webpack 重新编译，可以改变入口 html。</p>
-                <template v-if="formValidate.i18n">
-                    <h4>多语言</h4>
-                    <p>iView 已预先将多语言配置写入 <a href="javascript:void(0)" @click="handleOpenFile('src/main.js')">src/main.js</a> 文件，并支持中文和英文，可在 <a href="javascript:void(0)" @click="handleOpenFile('src/locale.js')">src/locale.js</a> 配置。</p>
-                </template>
+                <h4>自定义页面</h4>
+                <p>iBiu根据你的配置文件,生成了相关目录以及相关页面,并将路由指向了它们<a href="javascript:void(0)" @click="handleOpenFile('src/template/index.ejs')">点击查看 </a> 文件</p>
                 <template v-if="formValidate.eslint">
                     <h4>ESLint</h4>
                     <p>使用 ESLint 来检测代码是否符合规范：</p>

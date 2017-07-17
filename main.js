@@ -13,7 +13,7 @@ function createWindow () {
         width: 360,
         // width: 1000,
         height: 572,
-        title: 'iView',
+        title: 'iBiu',
         center: true,
         // resizable: false,
         icon: logo,
@@ -47,13 +47,13 @@ function createMenu () {
             label: app.getName(),
             submenu: [
                 {
-                    label: '关于 iView Cli',
+                    label: '关于 iBiu',
                     click () {
                         if (win_about == null) {
                             win_about = new BrowserWindow({
                                 width: 300,
                                 height: 180,
-                                title: '关于 iView',
+                                title: '关于 iBiu',
                                 center: true,
                                 resizable: false,
                                 icon: logo,
