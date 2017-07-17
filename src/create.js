@@ -102,39 +102,39 @@ const app = new Vue({
             navNeed:true,
 
             nav:`[
-            {name:"一级导航1",
+            {name:"first1",
              short:"first1",
              children:[
-                 {name:"二级导航1",
+                 {name:"sec1",
                      short:"sec1",
                      children:[
-                         {name:"三级导航",
+                         {name:"third1",
                              short:"third1"
                          }
                      ]
                  }
              ]
             },
-            {name:"一级导航2",
+            {name:"first2",
                 short:"first2",
                 children:[
-                    {name:"二级导航2",
+                    {name:"sec2",
                         short:"sec1",
                         children:[
-                            {name:"三级导航",
+                            {name:"third1",
                                 short:"third1"
                             }
                         ]
                     }
                 ]
             },
-            {name:"一级导航3",
+            {name:"first3",
                 short:"first3",
                 children:[
-                    {name:"二级导航3",
+                    {name:"sec3",
                         short:"sec1",
                         children:[
-                            {name:"三级导航",
+                            {name:"third1",
                                 short:"third1"
                             }
                         ]
@@ -158,7 +158,6 @@ const app = new Vue({
             router: 1,
             app: 1,
             indexHtml: 1,
-            template: 1,
             main: 1,
             bus: 1,
             gitignore: 1,
