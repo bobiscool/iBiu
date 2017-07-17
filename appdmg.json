@@ -1,9 +1,9 @@
 {
-  "title": "iView",
-  "icon": "assets/img/iView.icns",
+  "title": "iBiu",
+  "icon": "assets/img/iBiu.icns",
   "background-color": "#eee",
   "contents": [
     { "x": 448, "y": 200, "type": "link", "path": "/Applications" },
-    { "x": 192, "y": 200, "type": "file", "path": "iView-darwin-x64/iView.app" }
+    { "x": 192, "y": 200, "type": "file", "path": "iBiu-darwin-x64/iBiu.app" }
   ]
 }

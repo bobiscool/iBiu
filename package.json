@@ -1,11 +1,10 @@
 {
-  "name": "iview-cli",
+  "name": "iBiu",
   "version": "2.0.0",
-  "title": "iView Cli",
-  "description": "Quick way to create an iView project.",
-  "homepage": "http://www.iviewui.com",
+  "title": "iBiu",
+  "description": "Build Vue spa faster",
   "keywords": [
-    "iview",
+    "iBiu",
     "vue",
     "vue.js",
     "cli"
@@ -13,21 +12,21 @@
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "build:linux32": "electron-packager ./ iView --platform=linux --arch=ia32 ~/Desktop/iView --electronVersion=1.4.15 --overwrite --icon=./assets/img/iView.icns",
-    "build:linux64": "electron-packager ./ iView --platform=linux --arch=x64 ~/Desktop/iView --electronVersion=1.4.15 --overwrite --icon=./assets/img/iView.icns",
-    "build:mac": "electron-packager ./ iView --platform=darwin --arch=x64 ~/Desktop/iView --electronVersion=1.4.15 --overwrite --icon=./assets/img/iView.icns",
-    "build:win32": "electron-packager ./ iView --platform=win32 --arch=ia32 ~/Desktop/iView --electronVersion=1.4.15 --overwrite --icon=./assets/img/iView.icns",
-    "build:win64": "electron-packager ./ iView --platform=win32 --arch=x64 ~/Desktop/iView --electronVersion=1.4.15 --overwrite --icon=./assets/img/iView.icns",
-    "appdmg": "appdmg appdmg.json ~/Desktop/iView.dmg"
+    "build:linux32": "electron-packager ./ iView --platform=linux --arch=ia32 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iBiu.icns",
+    "build:linux64": "electron-packager ./ iView --platform=linux --arch=x64 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iBiu.icns",
+    "build:mac": "electron-packager ./ iBiu --platform=darwin --arch=x64 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iBiu.icns",
+    "build:win32": "electron-packager ./ iView --platform=win32 --arch=ia32 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iView.icns",
+    "build:win64": "electron-packager ./ iView --platform=win32 --arch=x64 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iBiu.icns",
+    "appdmg": "appdmg appdmg.json ~/Desktop/iBiu.dmg"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/iview/iview-cli"
+    "url": "https://github.com/bobiscool/iBiu"
   },
-  "author": "Aresn",
+  "author": "bobiscool",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iview/iview-cli/issues"
+    "url": "https://github.com/bobiscool/iBiu/issues"
   },
   "dependencies": {
     "axios": "^0.15.3",
@@ -40,9 +39,6 @@
     "electron-prebuilt": "^1.4.13"
   },
   "update": {
-    "version": 3,
-    "mac": "http://git.oschina.net/icarusion/iviewcli/raw/master/iView-cli-2.0.0.dmg",
-    "windows": "http://git.oschina.net/icarusion/iviewcli/raw/master/iView-cli-2.0.0-win32-x64.zip",
-    "desc": "<li>全面升级至2.0</li>"
+    "version": 3
   }
 }
