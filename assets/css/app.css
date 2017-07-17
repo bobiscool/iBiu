@@ -30,18 +30,36 @@ body{
 .home-row{
     height: 100%;
 }
-.home-logo, .home-name{
-    width: 90px;
-    height: 90px;
+.home-logo {
+    width: 110px;
+    height: 110px;
     margin: 0 auto;
-    background-image: url("../img/iview-logo.png");
+    background-image: url("../img/ibiu.svg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 .home-name{
+    width: 83px;
     height: 40px;
-    background-image: url("../img/iview-name.png");
+    margin: 10px auto;
+    background-repeat: no-repeat;
+    background: url("../img/ibiu-name.svg");
+    background-size: cover;
+
 }
+
+/*.home-name span {*/
+    /*display: inline-block;*/
+/*}*/
+/*.home-name span:first-child{*/
+    /*color: #2baee9;*/
+/*}*/
+
+
+/*.home-name span:last-child{*/
+    /*color: #000;*/
+/*}*/
+
 .home-desc{
     margin: 20px 0 20px;
     font-size: 14px;
