@@ -319,8 +319,8 @@ exports.routerTempalte = [
         `
     },
     function (mainName,childrens,_childrens) {
-    console.log('Sam级导航');
-    console.log(_childrens);
+    // console.log('Sam级导航');
+    // console.log(_childrens);
     var temChild = "";
     let temThirdRdirect =[];
 
@@ -348,7 +348,7 @@ exports.routerTempalte = [
         }
 
 
-        console.log(temChild);
+        // console.log(temChild);
 
 
         return `

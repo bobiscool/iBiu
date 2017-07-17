@@ -75,7 +75,7 @@ function createMenu () {
                 },
                 {
                     role: 'quit',
-                    label: '退出 iView'
+                    label: '退出 iBiu'
                 }
             ]
         }

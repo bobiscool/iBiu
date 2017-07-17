@@ -19,58 +19,12 @@ var paths = []
 
 /* 拿到的数据不是json 所以需要报一个var c = 然后来执行*/
 
-var c = `var c=[
-            {name:"一级导航1",
-             short:"first",
-             children:[
-                 {name:"二级导航1",
-                     short:"first",
-                     children:[
-                         {name:"三级导航",
-                             short:"first"
-                         }
-                     ]
-                 }
-             ]
-            },
-            {name:"一级导航2",
-                short:"first",
-                children:[
-                    {name:"二级导航2",
-                        short:"first",
-                        children:[
-                            {name:"三级导航",
-                                short:"first"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {name:"一级导航3",
-                short:"first",
-                children:[
-                    {name:"二级导航3",
-                        short:"first",
-                        children:[
-                            {name:"三级导航",
-                                short:"first"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-        var t =gernerateData(c);
-        console.log(t);
-        `;
-
-eval(c);
 
 /*把json数据转换成我想要的数据*/
 function gernerateData(nav) {
     var tem = {};
     nav.forEach(function (val) {
-        console.log(val);
+        // console.log(val);
       if(val.children&&val.children.length>0){
           tem[val.name+"_"+val.short]=gernerateData(val.children)
       }else {
@@ -140,7 +94,7 @@ function generSrcName(name) {
 /*生成template里面的名称 以及src用的*/
 function splitShortAll(names,src) {
     var temSrc = generSrcName(src);
-    console.log(temSrc);
+    // console.log(temSrc);
     var tem2 = [];
     for(var i in names) {
         tem2.push({text:names[i].split('_')[0],src:temSrc+'/'+names[i].split('_')[1]})
@@ -194,7 +148,7 @@ function generateDir(data,pre_dir) {
            if(!fs.existsSync(pre_dir+'/'+tem.short)){
                if(pre_dir){
 
-                   console.log(pre_dir);
+                   // console.log(pre_dir);
                    fs.mkdirSync(pre_dir+'/'+tem.short);//当前目录
                    if(tem.short!=="views"){
                        fs.writeFile(`${pre_dir}/${tem.short}/index.vue`,
@@ -264,8 +218,8 @@ function generateRoutejs(location,data) {
     names.forEach(function (val) {
         namesShort.push(getShort(val));
     });
-    console.log('data');
-    console.log(data);
+    // console.log('data');
+    // console.log(data);
     fs.mkdir(`${location}`+'/router');
     fs.writeFile(`${location}/router/index.js`,beauty(routerTempalte[0](namesShort)));
     for(var i in namesShort){
@@ -277,7 +231,7 @@ function generateRoutejs(location,data) {
         });
 
 
-        console.log(__CsC);
+        // console.log(__CsC);
 
         fs.writeFile(`${location}/router/${namesShort[i]}.js`,beauty(routerTempalte[1](namesShort[i],getChildrenShort(data[names[i]]),__CsC)));
     }
@@ -291,7 +245,7 @@ function generateRoutejs(location,data) {
 exports.create_router = function (location,navData) {
     var c=`var data=${navData}
         var geData =gernerateData(data);
-        console.log(geData);
+       //console.log(geData);
         
          generateDir(wrapViews(geData),"${location}/src");
          generateRoutejs("${location}/src",geData)

@@ -45,47 +45,7 @@ Vue.component('log', {
 const app = new Vue({
     el: '#app',
     data: {
-        example:`[
-            {name:"一级导航1",
-             short:"first",
-             children:[
-                 {name:"二级导航1",
-                     short:"first",
-                     children:[
-                         {name:"三级导航",
-                             short:"first"
-                         }
-                     ]
-                 }
-             ]
-            },
-            {name:"一级导航2",
-                short:"first",
-                children:[
-                    {name:"二级导航2",
-                        short:"first",
-                        children:[
-                            {name:"三级导航",
-                                short:"first"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {name:"一级导航3",
-                short:"first",
-                children:[
-                    {name:"二级导航3",
-                        short:"first",
-                        children:[
-                            {name:"三级导航",
-                                short:"first"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]`,
+        example:``,
         formValidate: {
             iviewVersion: '2.x',
             ui:"elementUI",
@@ -313,6 +273,7 @@ const app = new Vue({
                         // 我的创建目录以及路由
                       if(this.formValidate.navNeed&&this.formValidate.nav){
                           create_router(saveDirectory,this.formValidate.nav);
+                          this.log.router = 2;
                       }
                       // 创建 配置项
                         create_build(
@@ -350,6 +311,8 @@ const app = new Vue({
                                 this.log.static = 3;
                             }
                         });
+
+
 
                         //创建css
                         createCss(
@@ -395,7 +358,7 @@ const app = new Vue({
                             }
                         })
 
-                        console.log(this.log);
+                        // console.log(this.log);
 
                     }
                 }
@@ -431,7 +394,7 @@ const app = new Vue({
         formValidate:{
           deep:true,
           handler:function (val) {
-              console.log(val.nav);
+              // console.log(val.nav);
           }
         }
     }
