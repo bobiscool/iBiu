@@ -77,7 +77,10 @@ body {
 .header ul {
     display: flex;
     flex-direction: row;
+    padding-left:10px;
 }
+
+
 
 .logo {
     display: inline-block;
@@ -504,6 +507,9 @@ height: 100%;
     }
   }
 
+.router-link-active {
+  color:#00aaff!important;
+}
 
 
 `;

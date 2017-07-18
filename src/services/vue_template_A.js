@@ -13,7 +13,7 @@ exports.template = [
         }
 
         console.log(names);
-        var temUl = "<ul>" + temString + "</ul>";
+        var temUl = temString ;
 
 
         return `

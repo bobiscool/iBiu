@@ -14,7 +14,7 @@ exports.create_login = function (opts) {
   <div class="login-logo"></div>
   <input type="text" placeholder="name"/>
    <input type="password" placeholder="password"/>
-      <button>login</button>
+      <button><router-link to="/">login</router-link></button>
 </div>
 </div>
 
