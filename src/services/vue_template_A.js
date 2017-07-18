@@ -13,7 +13,7 @@ exports.template = [
         }
 
         console.log(names);
-        var temUl = temString ;
+        var temUl = temString;
 
 
         return `
@@ -271,11 +271,17 @@ exports.routerTempalte = [
     function (names) {
         var im = "";
         var im2 = "";
-        for (var i in names) {
-            im += "import " + names[i] + " from './" + names[i] + ".js'; \n";
-            im2 += names[i]+",\n";
+        if (names.length) {
+            for (var i in names) {
+                im += "import " + names[i] + " from './" + names[i] + ".js'; \n";
+                im2 += names[i] + ",\n";
+            }
         }
 
+
+        if (!names[0]) {
+            names[0] = '';
+        }
 
         return `
     import Vue from 'vue';
@@ -318,44 +324,50 @@ exports.routerTempalte = [
    
         `
     },
-    function (mainName,childrens,_childrens) {
-    // console.log('Sam级导航');
-    // console.log(_childrens);
-    var temChild = "";
-    let temThirdRdirect =[];
+    function (mainName, childrens, _childrens) {
+        // console.log('Sam级导航');
+        // console.log(_childrens);
+        var temChild = "";
+        let temThirdRdirect = [];
+        let ifRedirect = "";
+        let ifRedirect2 = ""
 
 
 
-    if(childrens.length>=0){
 
+        if (childrens.length >= 0) {
+            ifRedirect2 = ",redirect:/"+mainName+"/"+childrens[0];
+            for (let i in childrens) {
+                // 拼接三级导航
+                var $CsC = "";
+                if (_childrens[childrens[i]] && _childrens[childrens[i]].length > 0) {
+                    for (let j in _childrens[childrens[i]]) {
+                        $CsC += " {\n      path:\"/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "/index.vue'));\n        })\n      }\n    }\n";
 
-
-        for(let i in childrens){
-            // 拼接三级导航
-            var $CsC ="";
-            if(_childrens[childrens[i]]&&_childrens[childrens[i]].length>0) {
-                for (let j in _childrens[childrens[i]]) {
-                    $CsC += " {\n      path:\"/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j] + "/index.vue'));\n        })\n      }\n    }\n";
-
-                    temThirdRdirect.push("/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j]); //收集三级链接 用于redirect
-                    // console.log($CsC);
+                        temThirdRdirect.push("/" + mainName + "/" + childrens[i] + "/" + _childrens[childrens[i]][j]); //收集三级链接 用于redirect
+                        // console.log($CsC);
+                    }
                 }
+
+                // console.log(_childrens[i]&&_childrens[childrens[i]].length>0);
+                //拼接二级导航
+                if (temThirdRdirect[0]) {
+                    //如果二级不存在 子集 那就指向自己
+                    ifRedirect = ",redirect:'" + temThirdRdirect[0]+"'";
+                }
+
+                temChild += " {\n      path:\"/" + mainName + "/" + childrens[i] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/index.vue'));\n        })\n   }\n" + ifRedirect + ",\n" + "children:[\n" + $CsC + "]\n" + "   }\n";
             }
 
-            // console.log(_childrens[i]&&_childrens[childrens[i]].length>0);
-           //拼接二级导航
-            temChild+=" {\n      path:\"/" + mainName + "/" + childrens[i] + "\",\n      component(resolve) {\n        require.ensure(['views/" + mainName + "/" + childrens[i] + "/index.vue'], () => {\n          resolve(require('views/" + mainName + "/" + childrens[i] + "/index.vue'));\n        })\n   }\n, "+"redirect:'"+temThirdRdirect[0]+"',\n"+"children:[\n"+$CsC+"]\n"+"   }\n";
-        }
+
+            // console.log(temChild);
 
 
-        // console.log(temChild);
-
-
-        return `
+            return `
   export default {
   path:"/${mainName}",
-  meta:{requiresAuth:true},
-  redirect:"/${mainName}/${childrens[0]}",
+  meta:{requiresAuth:true}
+  ${ifRedirect2},
   component(resolve) {
     require.ensure(['views/${mainName}/index.vue'], () => {
       resolve(require('views/${mainName}/index.vue'));
@@ -366,8 +378,8 @@ exports.routerTempalte = [
   ]
 } `
 
-    }else {
-        return `
+        } else {
+            return `
   export default {
   path:"/${mainName}",
   meta:{requiresAuth:true},
@@ -377,7 +389,7 @@ exports.routerTempalte = [
     })
   }
 } `
-    }
+        }
 
 
     }

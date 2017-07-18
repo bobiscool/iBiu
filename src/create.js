@@ -68,9 +68,7 @@ const app = new Vue({
                  {name:"sec1",
                      short:"sec1",
                      children:[
-                         {name:"third1",
-                             short:"third1"
-                         }
+                        
                      ]
                  }
              ]
@@ -90,16 +88,7 @@ const app = new Vue({
             },
             {name:"first3",
                 short:"first3",
-                children:[
-                    {name:"sec3",
-                        short:"sec1",
-                        children:[
-                            {name:"third1",
-                                short:"third1"
-                            }
-                        ]
-                    }
-                ]
+             
             }
         ]`
         },

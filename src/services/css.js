@@ -328,9 +328,7 @@ body {
     /*margin-bottom: 0;*/
 }
 
-.breadcrumb .breadcrumb-item:first-of-type a {
-    color: #00aaff;
-}
+
 .container {
   flex:1;
   background: #ddd;
@@ -451,6 +449,9 @@ height: 100%;
     background: #20a8d8;
   }
 
+.login-form button a {
+ color:#fff!important;
+}
 
   .login-form input:-webkit-autofill{
     background: #f2f2f2!important;
