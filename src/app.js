@@ -21,10 +21,7 @@ const app = new Vue({
         },
         handleOpenDoc () {
             // this.isHidden = true;
-            setTimeout(() => {
-                window.open("http://www.baidu.com");
-
-            }, 100);
+            this.handleOpenLink('https://github.com/bobiscool/iBiu');
         },
         handleOk () {
             if (process.platform === 'darwin') {
@@ -35,7 +32,10 @@ const app = new Vue({
         },
         handleCancel () {
 
-        }
+        },
+        handleOpenLink (url) {
+            shell.openExternal(url);
+        },
     },
     mounted () {
     }

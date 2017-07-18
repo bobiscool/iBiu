@@ -42,12 +42,19 @@
                             <i-switch v-model="formValidate.navNeed" :disabled="true"></i-switch>
                     </Form-item>
                     <Form-item label="页面路由结构:" v-if="formValidate.navNeed">
-
+                        <div slot="label">
+                            <span>路由结构</span>
+                            <span @click="handleOpenLink('https://github.com/bobiscool/iBiu')">
+                                <Icon type="ios-help" size="14" color="#3399ff" ></Icon>
+                            <!--</Tooltip>-->
+                            </span>
+                            <span>：</span>
+                        </div>
                         <div class="nav" >
                             <!--<textarea  ></textarea>-->
                             <textarea name="textarea"
                                       rows="10" cols="35" v-model="formValidate.nav"
-                                      style="border: 1px solid #39f;line-height: 20px;"
+                                      style="border: 1px solid #39f;line-height: 20px; margin-top: 10px;"
 
                             ></textarea>
 
