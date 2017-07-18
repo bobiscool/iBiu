@@ -62,35 +62,276 @@ const app = new Vue({
             navNeed:true,
 
             nav:`[
-            {name:"first1",
-             short:"first1",
-             children:[
-                 {name:"sec1",
-                     short:"sec1",
-                     children:[
-                        
-                     ]
-                 }
-             ]
-            },
-            {name:"first2",
-                short:"first2",
-                children:[
-                    {name:"sec2",
-                        short:"sec1",
-                        children:[
-                            {name:"third1",
-                                short:"third1"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {name:"first3",
-                short:"first3",
-             
-            }
-        ]`
+  {
+    "name": "视频",
+    "short": "video",
+    "children": [
+      {
+        "name": "搞笑视频",
+        "short": "funny",
+        "children": [
+          {
+            "name": "恶搞",
+            "short": "sproof"
+          },
+          {
+            "name": "无厘头",
+            "short": "wulitou"
+          }
+        ]
+      },
+      {
+        "name": "恐怖视频",
+        "short": "scary",
+        "children": [
+          {
+            "name": "灵异",
+            "short": "ghost"
+          },
+          {
+            "name": "血腥",
+            "short": "blood"
+          }
+        ]
+      },
+      {
+        "name": "运动视频",
+        "short": "sports",
+        "children": [
+          {
+            "name": "滑雪",
+            "short": "skating"
+          },
+          {
+            "name": "冲浪",
+            "short": "surfing"
+          }
+        ]
+      },
+      {
+        "name": "旅游",
+        "short": "travel",
+        "children": [
+          {
+            "name": "历史",
+            "short": "history"
+          },
+          {
+            "name": "风景",
+            "short": "scenery"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "文章",
+    "short": "posts",
+    "children": [
+      {
+        "name": "鸡汤",
+        "short": "soup",
+        "children": [
+          {
+            "name": "毒鸡汤1",
+            "short": "taintSoup1"
+          },
+          {
+            "name": "毒鸡汤2",
+            "short": "taintSoup2"
+          }
+        ]
+      },
+      {
+        "name": "实时杂文",
+        "short": "essays",
+        "children": [
+          {
+            "name": "国内新闻",
+            "short": "homeNews"
+          },
+          {
+            "name": "国际新闻",
+            "short": "inernationalNews"
+          },{
+            "name": "社会热点",
+            "short": "socialFocus"
+          }
+        ]
+      },
+      {
+        "name": "小说",
+        "short": "fiction",
+        "children": [
+          {
+            "name": "历史小说",
+            "short": "historyFiction"
+          },
+          {
+            "name": "科幻小说",
+            "short": "scienceFiction"
+          }
+        ]
+      },
+      {
+        "name": "文学",
+        "short": "literature",
+        "children": [
+          {
+            "name": "现代散文",
+            "short": "third1"
+          },
+          {
+            "name": "诗词",
+            "short": "poetry"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "游戏",
+    "short": "games",
+    "children": [
+      {
+        "name": "动作游戏",
+        "short": "action",
+        "children": [
+          {
+            "name": "战神",
+            "short": "godOfWar"
+          },
+          {
+            "name": "全职猎人",
+            "short": "hunter"
+          },
+          {
+            "name": "GTA5",
+            "short": "GTA5"
+          }
+
+        ]
+      },
+      {
+        "name": "射击游戏",
+        "short": "shooting",
+        "children": [
+          {
+            "name": "使命召唤",
+            "short": "callOfDuty"
+          },
+          {
+            "name": "英雄连",
+            "short": "BandOfBrothers"
+          },
+          {
+            "name": "合金装备",
+            "short": "MGS"
+          }
+
+        ]
+      },
+      {
+        "name": "策略",
+        "short": "strategy",
+        "children": [
+          {
+            "name": "红色警戒",
+            "short": "redAlert"
+          },
+          {
+            "name": "地球帝国",
+            "short": "earchEmpire"
+          },
+          {
+            "name": "魔兽世界",
+            "short": "warcraft"
+          }
+
+        ]
+      }
+    ]
+  },
+  {
+    "name": "音乐",
+    "short": "music",
+    "children": [
+      {
+        "name": "电音",
+        "short": "DM",
+        "children": [
+          {
+            "name": "浩室",
+            "short": "house"
+          },
+          {
+            "name": "trance",
+            "short": "trance"
+          },
+          {
+            "name": "中国风",
+            "short": "china"
+          }
+        ]
+      },
+      {
+        "name": "民谣",
+        "short": "folk",
+        "children": [
+          {
+            "name": "宋冬野",
+            "short": "songdongye"
+          },
+          {
+            "name": "陈璧",
+            "short": "chenbi"
+          },
+          {
+            "name": "左小祖咒",
+            "short": "zxzz"
+          }
+        ]
+      },
+      {
+        "name": "流行",
+        "short": "popMusic",
+        "children": [
+          {
+            "name": "陈奕迅",
+            "short": "eason"
+          },
+          {
+            "name": "周杰伦",
+            "short": "jay"
+          },
+          {
+            "name": "薛之谦",
+            "short": "Joker"
+          }
+        ]
+      },
+      {
+        "name": "古典",
+        "short": "classical",
+        "children": [
+          {
+            "name": "约翰施特劳斯",
+            "short": "john"
+          },
+          {
+            "name": "久石让",
+            "short": "hansishi"
+          },
+          {
+            "name": "汉斯季默",
+            "short": "Hans Zimmer"
+          }
+        ]
+      }
+    ]
+  },
+]
+`
         },
         ruleValidate: {
 
