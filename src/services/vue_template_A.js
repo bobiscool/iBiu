@@ -326,7 +326,7 @@ exports.routerTempalte = [
     },
     function (mainName, childrens, _childrens) {
         // console.log('Sam级导航');
-        // console.log(_childrens);
+        console.log('children',childrens);
         var temChild = "";
         let temThirdRdirect = [];
         let ifRedirect = "";
@@ -335,8 +335,8 @@ exports.routerTempalte = [
 
 
 
-        if (childrens.length >= 0) {
-            ifRedirect2 = ",redirect:/"+mainName+"/"+childrens[0];
+        if (childrens.length >0) {
+            ifRedirect2 = ",redirect:'/"+mainName+"/"+childrens[0]+"'";
             for (let i in childrens) {
                 // 拼接三级导航
                 var $CsC = "";
