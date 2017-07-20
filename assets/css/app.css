@@ -34,7 +34,7 @@ body{
     width: 110px;
     height: 110px;
     margin: 0 auto;
-    background-image: url("../img/ibiu.svg");
+    background-image: url("../img/ibiuLogo.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -43,7 +43,7 @@ body{
     height: 40px;
     margin: 10px auto;
     background-repeat: no-repeat;
-    background: url("../img/ibiu-name.svg");
+    background: url("../img/ibiuTitle.png");
     background-size: cover;
 
 }
