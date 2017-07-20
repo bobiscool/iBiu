@@ -3,6 +3,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const os = require('os')
 const beauty = require('js-beautify').js_beautify;
 const { template,routerTempalte } = require("./vue_template_A.js");
 var paths = []
@@ -243,12 +244,19 @@ function generateRoutejs(location,data) {
 
 /*最后暴露一个函数*/
 exports.create_router = function (location,navData) {
+    var _location = location;
+    if(os.type().indexOf('Windows')!=-1){
+        _location = location.split('\\').join('/');
+    }
+
+
+
     var c=`var data=${navData}
         var geData =gernerateData(data);
        //console.log(geData);
         
-         generateDir(wrapViews(geData),"${location}/src");
-         generateRoutejs("${location}/src",geData)
+         generateDir(wrapViews(geData),"${_location}/src");
+         generateRoutejs("${_location}/src",geData)
         console.log("执行")
         `;
 

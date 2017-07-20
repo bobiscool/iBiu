@@ -25,21 +25,31 @@ ol {
     margin-top: 0;
 }
 
-input, button, submit { border:none; }
+input,
+button,
+submit {
+    border: none;
+}
 
-  input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+input::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
     background: #f2f2f2;
-  }
-  input::-moz-placeholder { /* Firefox 19+ */
-    background: #f2f2f2;
-  }
-  input:-ms-input-placeholder { /* IE 10+ */
-    background: #f2f2f2;
-  }
-  input:-moz-placeholder { /* Firefox 18- */
-    background: #f2f2f2;
-  }
+}
 
+input::-moz-placeholder {
+    /* Firefox 19+ */
+    background: #f2f2f2;
+}
+
+input:-ms-input-placeholder {
+    /* IE 10+ */
+    background: #f2f2f2;
+}
+
+input:-moz-placeholder {
+    /* Firefox 18- */
+    background: #f2f2f2;
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -47,7 +57,6 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
 }
-
 
 html,
 body {
@@ -77,10 +86,8 @@ body {
 .header ul {
     display: flex;
     flex-direction: row;
-    padding-left:10px;
+    padding-left: 10px;
 }
-
-
 
 .logo {
     display: inline-block;
@@ -95,9 +102,9 @@ body {
 
 .logo-items {
     display: inline-block;
-    width: 26px;
+    width: 30px;
     height: 30px;
-    background: url("http://7o50ww.com1.z0.glb.clouddn.com/ibiu.svg");
+    background: url("http://7o50ww.com1.z0.glb.clouddn.com/ibiuLogo.png");
     background-size: cover;
 }
 
@@ -317,7 +324,6 @@ body {
     padding: 0 30px;
 }
 
-
 .breadcrumb li {
     margin-left: 10px;
     font-size: 14px;
@@ -328,190 +334,177 @@ body {
     /*margin-bottom: 0;*/
 }
 
-
 .container {
-  flex:1;
-  background: #ddd;
+    flex: 1;
+    background: #ddd;
 }
 
 .demo {
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-
-
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .info-board {
-  width:100%;
-  height:200px;
-  display: flex;
+    width: 100%;
+    height: 200px;
+    display: flex;
 }
 
 .info-board__items {
- flex:1;
-  padding: 20px;
+    flex: 1;
+    padding: 20px;
 }
 
 .box {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .color1 {
-background: #20a8d8;
+    background: #20a8d8;
 }
-
-
 
 .color2 {
-  background: #63c2de;
+    background: #63c2de;
 }
 
-
 .color3 {
- background: #f8cb00;
+    background: #f8cb00;
 }
 
 .color4 {
-  background: #f86c6b;
+    background: #f86c6b;
 }
 
 .chart {
-  width: 100%;
-  margin-top: 50px;
-  flex: 1;
-  background: #fff;
-  border-radius: 5px;
-  margin-bottom: 20px;
+    width: 100%;
+    margin-top: 50px;
+    flex: 1;
+    background: #fff;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .login {
-background: #63c2de;
-width: 100%;
-height: 100%;
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
+    background: #63c2de;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.login-form{
-  width:400px;
-  /*height: 250px;*/
-  box-sizing: border-box;
-  padding: 45px;
-  padding-top: 20px;
-  background: #fff;
-  border-radius: 1px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /*box-shadow:1px 1px 20px 1px rgba(0,0,0,0.2);*/
+.login-form {
+    width: 400px;
+    /*height: 250px;*/
+    box-sizing: border-box;
+    padding: 45px;
+    padding-top: 20px;
+    background: #fff;
+    border-radius: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*box-shadow:1px 1px 20px 1px rgba(0,0,0,0.2);*/
 }
-
 
 .login-form input {
-  font-family: "Microsoft YaHei";
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    font-family: "Microsoft YaHei";
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .login-form button {
-  font-family: "Microsoft YaHei";
-  color: #f2f2f2;
-  text-transform: uppercase;
-  outline: 0;
-  background: #63c2de;
-  width: 100%;
-  /*border-radius: 5px;*/
-  padding:15px;
-  font-size: 16px;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  cursor:pointer;
+    font-family: "Microsoft YaHei";
+    color: #f2f2f2;
+    text-transform: uppercase;
+    outline: 0;
+    background: #63c2de;
+    width: 100%;
+    /*border-radius: 5px;*/
+    padding: 15px;
+    font-size: 16px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-  .login-form button:hover,.login-form button:active,.login-form button:focus {
+.login-form button:hover,
+.login-form button:active,
+.login-form button:focus {
     background: #20a8d8;
-  }
+}
 
 .login-form button a {
- color:#fff!important;
+    color: #fff!important;
 }
 
-  .login-form input:-webkit-autofill{
+.login-form input:-webkit-autofill {
     background: #f2f2f2!important;
-  }
-
+}
 
 .login-logo {
-  width:100px;
-  height: 115px;
-  background: url("http://7o50ww.com1.z0.glb.clouddn.com/ibiu.svg");
-  margin-bottom: 10px;
+    width: 120px;
+    height: 120px;
+    background: url("http://7o50ww.com1.z0.glb.clouddn.com/ibiuLogo.png");
+    background-size:cover;
+    margin-bottom: 10px;
 }
-
 
 .notFound {
-  width:100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items:center;
-  justify-content: center;
-  color: #ffffff;
-  background: #000000;
-  font-size: 40px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background: #000000;
+    font-size: 40px;
 }
- .notFound span {
-    display:inline-block;
+
+.notFound span {
+    display: inline-block;
     -webkit-animation-name: haha;
     -moz-animation-name: haha;
     -o-animation-name: haha;
     animation-name: haha;
     animation-duration: 9000ms;
     animation-iteration-count: infinite;
-  }
-
-  @keyframes haha {
-    0% {
-      transform: rotateZ(0);
-    }
-
-
-    25% {
-      transform: rotateZ(45deg);
-    }
-
-
-    75% {
-      transform: rotateZ(-45deg);
-    }
-
-
-    100% {
-      transform: rotateZ(0deg);
-    }
-  }
-
-.router-link-active {
-  color:#00aaff!important;
 }
 
+@keyframes haha {
+    0% {
+        transform: rotateZ(0);
+    }
+    25% {
+        transform: rotateZ(45deg);
+    }
+    75% {
+        transform: rotateZ(-45deg);
+    }
+    100% {
+        transform: rotateZ(0deg);
+    }
+}
+
+.router-link-active {
+    color: #00aaff!important;
+}
 
 `;
     writeFile({

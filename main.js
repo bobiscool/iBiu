@@ -15,7 +15,7 @@ function createWindow () {
         height: 650,
         title: 'iBiu',
         center: true,
-        // resizable: false,
+        resizable: false,
         icon: logo,
         titleBarStyle: 'hidden'
     });
@@ -27,7 +27,7 @@ function createWindow () {
     }));
 
     // 打开开发者工具。
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
 
     // 当 window 被关闭，这个事件会被触发。
     win.on('close', (event) => {
