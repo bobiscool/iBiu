@@ -52,7 +52,7 @@ function createMenu () {
                         if (win_about == null) {
                             win_about = new BrowserWindow({
                                 width: 300,
-                                height: 180,
+                                height: 220,
                                 title: '关于 iBiu',
                                 center: true,
                                 resizable: false,
