@@ -1,6 +1,6 @@
 {
   "name": "iBiu",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "title": "iBiu",
   "description": "Build Vue spa faster",
   "keywords": [
@@ -12,12 +12,14 @@
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "build:linux32": "electron-packager ./ iView --platform=linux --arch=ia32 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iBiu.icns",
-    "build:linux64": "electron-packager ./ iView --platform=linux --arch=x64 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iBiu.icns",
+    "build:linux32": "electron-packager ./ iBiu --platform=linux --arch=ia32 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iBiu.icns",
+    "build:linux64": "electron-packager ./ iBiu --platform=linux --arch=x64 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iBiu.icns",
     "build:mac": "electron-packager ./ iBiu --platform=darwin --arch=x64 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iBiu.icns",
-    "build:win32": "electron-packager ./ iView --platform=win32 --arch=ia32 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iView.icns",
-    "build:win64": "electron-packager ./ iView --platform=win32 --arch=x64 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iBiu.icns",
-    "appdmg": "appdmg appdmg.json ~/Desktop/iBiu.dmg"
+    "build:win32": "electron-packager ./ iBiu --platform=win32 --arch=ia32 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iView.icns",
+    "build:win64": "electron-packager ./ iBiu --platform=win32 --arch=x64 ~/Desktop/iBiu --electronVersion=1.4.15 --overwrite --icon=./assets/img/iBiu.icns",
+    "appdmg": "appdmg appdmg.json ~/Desktop/iBiu.dmg",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "repository": {
     "type": "git",
@@ -35,10 +37,18 @@
     "vue": "^2.2.6"
   },
   "devDependencies": {
+    "electron-builder": "^19.16.1",
     "electron-packager": "^8.7.0",
     "electron-prebuilt": "^1.4.13"
   },
   "update": {
     "version": 3
+  },
+  "build": {
+    "appId": "chrdw",
+    "mac": {
+      "category": "dsfdsf"
+    }
+
   }
 }
