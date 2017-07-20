@@ -1,12 +1,13 @@
 ## iBiu~
+![](./assets/img/ibiuFor.png)
 
+### 一步到位的Vue脚手架工具
 
 > iBiu  was developed based on [iView-cli](https://github.com/iview/iview-cli) 
 > <br>`I'd like to thank iView-Cli's developers very much`
 > 
 
 
-### 一步到位的Vue脚手架工具
 主要基于
 
 - [Vue-cli](https://github.com/vuejs/vue-cli)
@@ -26,4 +27,16 @@
    - 根据用户提供的json数组创建**路由配置项，并将页面注册到路由上**
 
 > 意思是:当遇到比较大的vue项目时，你再也不用痛苦的一个一个去注册路由了！！！
+
+### 使用方法
+
+1. 点击新建项目
+2. 选择你与要配置的库
+3. 粘贴上你需要创建目录JSON[格式请参照此格式来](https://github.com/bobiscool/iBiu/blob/master/assets/github/formater.json)
+4. 点击创建工程 
+5. 创建完毕后打开目录
+   - 执行 `npm install`
+   - 执行 `npm run dev`
+   
+
 
