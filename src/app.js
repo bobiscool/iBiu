@@ -4,7 +4,7 @@ const BrowserWindow = remote.BrowserWindow;
 const win = BrowserWindow.getAllWindows()[0];
 const ipcMain = electron.ipcMain;
 
-const axios = require('axios');
+// const axios = require('axios');
 const shell = electron.shell;
 
 const app = new Vue({
