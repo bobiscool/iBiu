@@ -1,7 +1,8 @@
-## iBiu~
+## iBiu
+### 一步到位的Vue脚手架工具
 ![](./assets/img/ibiuFor.png)
 
-### 一步到位的Vue脚手架工具
+
 
 > iBiu  was developed based on [iView-cli](https://github.com/iview/iview-cli) 
 > <br>`I'd like to thank iView-Cli's developers very much`
@@ -31,12 +32,19 @@
 ### 使用方法
 
 1. 点击新建项目
-2. 选择你与要配置的库
+   ![](./assets/github/2017-07-21_11-20-39.png)
+2. 选择你与要配置的库  
 3. 粘贴上你需要创建目录JSON[格式请参照此格式来](https://github.com/bobiscool/iBiu/blob/master/assets/github/formater.json)
+   ![](./assets/github/2017-07-21_11-23-54.png)
 4. 点击创建工程 
 5. 创建完毕后打开目录
+   ![](./assets/github/2017-07-21_11-26-29.png)
+   ![](./assets/github/games_js_和_src.png)
    - 执行 `npm install`
    - 执行 `npm run dev`
-   
+6. 访问 `http://localhost:8080`
+   ![](./assets/github/2017-07-18_23-01-10.png)   
+   ![](./assets/github/2017-07-18_22-58-58.png)   
+
 
 
