@@ -1,6 +1,7 @@
 const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
 const url = require('url');
+const os = require('os');
 
 let logo = path.join(__dirname, 'assets/img/ibiu.png');
 let win = null;
@@ -86,7 +87,9 @@ function createMenu () {
 
 app.on('ready', () => {
     createWindow();
-    createMenu();
+    if(os.type().indexOf('Win')==-1){
+        createMenu();
+    }
 });
 app.on('activate', () => {
     if (win == null) {

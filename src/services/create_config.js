@@ -55,35 +55,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api/':{
-        target:"http://192.168.138.180:8080/mockjsdata/6",
-        changeOrigin:true,
-        pathRewrite:{
-          '^/api/':'/'
-        },
-
-      },
-      // '/alertWeb/':{
-      //   target:"http://111.175.7.12:10086",
-      //   changeOrigin:true,
-      //   // pathRewrite:{
-      //   //   '^/real/':'/'
-      //   // }
-      // },
-      // '/alertWeb/':{
-      //   target:"http://111.175.7.12:10086",
-      //   changeOrigin:true,
-      //   // pathRewrite:{
-      //   //   '^/real/':'/'
-      //   // }
-      // }
-      '/alertWeb/':{
-        target:"http://192.168.138.180:8080/mockjsdata/6",
-        changeOrigin:true,
-        pathRewrite:{
-          '^/alertWeb/':'/'
-        }
-      }
+     
 
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
