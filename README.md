@@ -1,12 +1,14 @@
+
 ## iBiu
 ### 一步到位的Vue脚手架工具
 ![](./assets/img/ibiuFor.png)
 
+#### [windows 64位版本软件下载](https://link.juejin.im/?target=https%3A%2F%2Fgit.oschina.net%2Fkarl-vicent%2FiBiu%2Fraw%2Fmaster%2Fwin%2FiBiu%2520Setup%25201.0.0.exe)
+#### [MAC 软件下载](https://link.juejin.im/?target=https%3A%2F%2Fgit.oschina.net%2Fkarl-vicent%2FiBiu%2Fraw%2Fmaster%2Fmacos%2FiBiu-1.0.0.dmg)
 
 
 > iBiu  was developed based on [iView-cli](https://github.com/iview/iview-cli) 
 > <br>`I'd like to thank iView-Cli's developers very much`
-> 
 
 
 主要基于
@@ -45,6 +47,6 @@
 6. 访问 `http://localhost:8080`<br>
    ![](./assets/github/2017-07-18_23-01-10.png)<br>   
    ![](./assets/github/2017-07-18_22-58-58.png)   
-
-
+   
+   
 
