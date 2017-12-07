@@ -20,7 +20,7 @@ function createWindow() {
         height: 650,
         title: 'iBiu',
         center: true,
-        resizable: false,
+        resizable: true,
         icon: logo,
         titleBarStyle: 'hidden'
     });

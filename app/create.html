@@ -43,9 +43,9 @@
 
             <div class="create-app">
                 <div class="create-form" v-show="status==='options'">
-                    <i-form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="120">
+                    <i-form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="180">
                     
-                        <Form-item label="Do you want the component library:" prop="ui">
+                        <Form-item label="Components library:" prop="ui">
                         
                             <Radio-group v-model="formValidate.ui">
                             
@@ -53,16 +53,16 @@
                             
                                 <Radio label="elementUI"> elementUI </Radio>
                             
-                                <Radio label="none"> Streaking </Radio>
+                                <Radio label="none"> Nothing </Radio>
                                 </Radio-group>
 
                             </Form-item>
 
                         <!-- TODO: 添加 导航 -->
-                        <Form-item label="Do you need navigation?"                 
+                        <!-- <Form-item label="Do you need navigation?">                 
                             <i-switch v-model="formValidate.navNeed" :disabled="true">
                             </i-switch>
-                        </Form-item>
+                        </Form-item> -->
                     
                         <Form-item label="Page routing structure:" v-if="formValidate.navNeed">
                         
