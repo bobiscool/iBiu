@@ -26,18 +26,18 @@
         </div>
         <div class="title" v-show="status === 'next'">iBiu - 进一步配置</div> -->
 
-        <div class="title" v-show="status === 'options'"> New Project </ div>
+        <div class="title" v-show="status === 'options'"> New Project </div>
             <div class="title" v-show="status === 'log' && titleStatus === 1">
                 iBiu - created
-                <Icon type="load-c" class="ivu-load-loop"> </ Icon>
+                <Icon type="load-c" class="ivu-load-loop"> </Icon>
             </div>
             <div class="title" v-show="status === 'log' && titleStatus === 2">
                 iBiu - Create completed
-                <Icon type="ios-checkmark-outline" color="# 00cc66"> </ Icon>
+                <Icon type="ios-checkmark-outline" color="#00cc66"> </Icon>
             </div>
             <div class="title" v-show="status === 'log' && titleStatus === 3">
                 iBiu - Creation failed
-                <Icon type="ios-close-outline" color="# ff5500"> </ Icon>
+                <Icon type="ios-close-outline" color="#ff5500"> </Icon>
             </div>
             <div class="title" v-show="status === 'next'"> iBiu - Further Configuration </div>
 
@@ -100,7 +100,7 @@
                         <Form-item label="Ajax：" prop="ajax">
                             <div slot="label">
                                 <span>Axios</span>
-                                <Tooltip content="基于 axios">
+                                <Tooltip content="Base on axios">
                                     <Icon type="ios-help" size="14" color="#3399ff"></Icon>
                                 </Tooltip>
                                 <span>：</span>
@@ -158,7 +158,7 @@
                         </i-col>
                     </Row>
                 </div>
-                <div class="create-info" v-show="status === 'log'">
+                <div class="create-info" v-show="status=='log'">
                     <!-- <log :status="log.package" content="创建 package.json"></log>
                     <log :status="log.babel" content="创建 .babelrc"></log>
                     <log :status="log.builds" content="创建 webpack 配置文件"></log>
