@@ -25,14 +25,11 @@ base on
    - According to the settings to create packgejson
 
 #### Pain point have been solved
-   - 根据用户提供的json数组**创建页面目录,结构与json上的一致**
    - Create  page directories based on the JSON array provided by the user, and the structure is consistent with the JSON
-   - 根据用户提供的json数组**创建各个页面到各自对应的目录**
    - Create various pages to their respective directories based on the JSON array provided by the user.
-   - 根据用户提供的json数组创建**路由配置项，并将页面注册到路由上**
-   - Create a route configuration item based on the JSON array provided by the user and register the page to the route.
+   - Create a route configuration item based on the user-supplied json array and register the page with the route.
 
-> 意思是:当遇到比较大的vue项目时，你再也不用痛苦的一个一个去注册路由了！！！
+> Means: When faced with a larger vue project, you no longer have to go to register router one by one painfully! ! !
 
 ### 使用方法
 
