@@ -42,7 +42,7 @@
             <div class="title" v-show="status === 'next'"> iBiu - Further Configuration </div>
 
             <div class="create-app">
-                <div class="create-form" v-show="status === 'options'">
+                <div class="create-form" v-show="status==='options'">
                     <i-form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="120">
                     
                         <Form-item label="Do you want the component library:" prop="ui">
@@ -70,7 +70,7 @@
                             
                                 <span> routing structure </span>
                             
-                                <span @ click="handleOpenLink('https://github.com/bobiscool/iBiu')">
+                                <span @click="handleOpenLink('https://github.com/bobiscool/iBiu')">
                                 
                                     <Icon type="ios-help" size="14" color="#3399ff">
                                     </Icon>

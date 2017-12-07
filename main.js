@@ -1,4 +1,8 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const {
+    app,
+    BrowserWindow,
+    Menu
+} = require('electron');
 const path = require('path');
 const url = require('url');
 const os = require('os');
@@ -9,7 +13,7 @@ let win_about = null;
 
 let willClose = false;
 
-function createWindow () {
+function createWindow() {
     win = new BrowserWindow({
         width: 380,
         // width: 1000,
@@ -28,7 +32,7 @@ function createWindow () {
     }));
 
     // 打开开发者工具。
-    // win.webContents.openDevTools();
+    win.webContents.openDevTools();
 
     // 当 window 被关闭，这个事件会被触发。
     win.on('close', (event) => {
@@ -42,19 +46,73 @@ function createWindow () {
     });
 }
 
-function createMenu () {
-    const template = [
+function createMenu() {
+    const template = [{
+            label: "Application",
+            submenu: [{
+                    label: "About Application",
+                    selector: "orderFrontStandardAboutPanel:"
+                },
+                {
+                    type: "separator"
+                },
+                {
+                    label: "Quit",
+                    accelerator: "Command+Q",
+                    click: function () {
+                        app.quit();
+                    }
+                }
+            ]
+        }, {
+            label: "Edit",
+            submenu: [{
+                    label: "Undo",
+                    accelerator: "CmdOrCtrl+Z",
+                    selector: "undo:"
+                },
+                {
+                    label: "Redo",
+                    accelerator: "Shift+CmdOrCtrl+Z",
+                    selector: "redo:"
+                },
+                {
+                    type: "separator"
+                },
+                {
+                    label: "Cut",
+                    accelerator: "CmdOrCtrl+X",
+                    selector: "cut:"
+                },
+                {
+                    label: "Copy",
+                    accelerator: "CmdOrCtrl+C",
+                    selector: "copy:"
+                },
+                {
+                    label: "Paste",
+                    accelerator: "CmdOrCtrl+V",
+                    selector: "paste:"
+                },
+                {
+                    label: "Select All",
+                    accelerator: "CmdOrCtrl+A",
+                    selector: "selectAll:"
+                }
+            ]
+        },
         {
             label: app.getName(),
             submenu: [
+
                 {
-                    label: '关于 iBiu',
-                    click () {
+                    label: 'About iBiu',
+                    click() {
                         if (win_about == null) {
                             win_about = new BrowserWindow({
                                 width: 300,
                                 height: 220,
-                                title: '关于 iBiu',
+                                title: 'About iBiu',
                                 center: true,
                                 resizable: false,
                                 icon: logo,
@@ -87,7 +145,7 @@ function createMenu () {
 
 app.on('ready', () => {
     createWindow();
-    if(os.type().indexOf('Win')==-1){
+    if (os.type().indexOf('Win') == -1) {
         createMenu();
     }
 });
