@@ -44,40 +44,51 @@
             <div class="create-app">
                 <div class="create-form" v-show="status === 'options'">
                     <i-form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="120">
-                              <Form-item label = "Do you want the component library:" prop = "ui">
-                                                        <Radio-group v-model = "formValidate.ui">
-                                                            <Radio label = "iview"> iView </Radio>
-                                                            <Radio label = "elementUI"> elementUI </Radio>
-                                                            <Radio label = "none"> Streaking </Radio>
-                                                        </Radio-group>
+                    
+                        <Form-item label="Do you want the component library:" prop="ui">
+                        
+                            <Radio-group v-model="formValidate.ui">
                             
-                                                    </Form-item>
+                                <Radio label="iview"> iView </Radio>
+                            
+                                <Radio label="elementUI"> elementUI </Radio>
+                            
+                                <Radio label="none"> Streaking </Radio>
+                                </Radio-group>
+
+                            </Form-item>
 
                         <!-- TODO: 添加 导航 -->
-                        <Form-item label="是否需要导航">
-
-                            <i-switch v-model="formValidate.navNeed" :disabled="true"></i-switch>
+                        <Form-item label="Do you need navigation?"                 
+                            <i-switch v-model="formValidate.navNeed" :disabled="true">
+                            </i-switch>
                         </Form-item>
-                        <Form-item label="页面路由结构:" v-if="formValidate.navNeed">
+                    
+                        <Form-item label="Page routing structure:" v-if="formValidate.navNeed">
+                        
                             <div slot="label">
-                                <span>路由结构</span>
-                                <span @click="handleOpenLink('https://github.com/bobiscool/iBiu')">
-                                    <Icon type="ios-help" size="14" color="#3399ff"></Icon>
-                                    <!--</Tooltip>-->
-                                </span>
-                                <span>：</span>
-                            </div>
+                            
+                                <span> routing structure </span>
+                            
+                                <span @ click="handleOpenLink('https://github.com/bobiscool/iBiu')">
+                                
+                                    <Icon type="ios-help" size="14" color="#3399ff">
+                                    </Icon>
+                                    </span>
+                            
+                                <span>: </span>
+                                </div>
+                        
                             <div class="nav">
-                                <!--<textarea  ></textarea>-->
-                                <textarea name="textarea" rows="10" cols="35" v-model="formValidate.nav" style="border: 1px solid #39f;line-height: 20px; margin-top: 10px;"></textarea>
+                            
+                                <textarea name="textarea" rows="10" cols="35" v-model="formValidate.nav"
+                                    style="border:1px solid #39f; line-height: 20px;"> </textarea>
+                                </div>
+                            </Form-item>
 
-                            </div>
-                            <!--<Input v-model="formValidate.nav" type="text"></Input>-->
-                            <!--<textarea :value="formValidate.nav"></textarea>-->
-                        </Form-item>
                         <!-- TODO: 添加 登录 -->
 
-                        
+
 
 
                         <Form-item label="CSS 预处理：" prop="css">
