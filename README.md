@@ -3,6 +3,8 @@
 ### One-stop Vue scaffolding tool
 ![](./assets/img/ibiuFor.png)
 
+[中文](/docs/cn.md)
+
 #### [Windows x64](https://link.juejin.im/?target=https%3A%2F%2Fgit.oschina.net%2Fkarl-vicent%2FiBiu%2Fraw%2Fmaster%2Fwin%2FiBiu%2520Setup%25201.0.0.exe)
 #### [MAC](https://link.juejin.im/?target=https%3A%2F%2Fgit.oschina.net%2Fkarl-vicent%2FiBiu%2Fraw%2Fmaster%2Fmacos%2FiBiu-1.0.0.dmg)
 
@@ -31,7 +33,7 @@ base on
 
 > Means: When faced with a larger vue project, you no longer have to go to register router one by one painfully! ! !
 
-### 使用方法
+### Instructions
 
 1. Click New Project<br>
    ![](./assets/github/2017-07-21_11-20-39.png)
