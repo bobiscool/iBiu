@@ -15,7 +15,7 @@ let willClose = false;
 
 function createWindow() {
     win = new BrowserWindow({
-        width: 380,
+        width: 400,
         // width: 1000,
         height: 650,
         title: 'iBiu',

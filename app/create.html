@@ -43,55 +43,55 @@
 
             <div class="create-app">
                 <div class="create-form" v-show="status==='options'">
-                    <i-form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="180">
-                    
-                        <Form-item label="Components library:" prop="ui">
-                        
-                            <Radio-group v-model="formValidate.ui">
-                            
-                                <Radio label="iview"> iView </Radio>
-                            
-                                <Radio label="elementUI"> elementUI </Radio>
-                            
-                                <Radio label="none"> Nothing </Radio>
-                                </Radio-group>
+                    <i-form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="130">
 
-                            </Form-item>
+                        <Form-item label="Components library:" prop="ui">
+
+                            <Radio-group v-model="formValidate.ui">
+
+                                <Radio label="iview"> iView </Radio>
+
+                                <Radio label="elementUI"> elementUI </Radio>
+
+                                <Radio label="none"> Nothing </Radio>
+                            </Radio-group>
+
+                        </Form-item>
 
                         <!-- TODO: 添加 导航 -->
                         <!-- <Form-item label="Do you need navigation?">                 
                             <i-switch v-model="formValidate.navNeed" :disabled="true">
                             </i-switch>
                         </Form-item> -->
-                    
+
                         <Form-item label="Page routing structure:" v-if="formValidate.navNeed">
-                        
+
                             <div slot="label">
-                            
-                                <span> routing structure </span>
-                            
+
+                                <span> Router structure </span>
+
                                 <span @click="handleOpenLink('https://github.com/bobiscool/iBiu')">
-                                
+
                                     <Icon type="ios-help" size="14" color="#3399ff">
                                     </Icon>
-                                    </span>
-                            
+                                </span>
+
                                 <span>: </span>
-                                </div>
-                        
+                            </div>
+
                             <div class="nav">
-                            
-                                <textarea name="textarea" rows="10" cols="35" v-model="formValidate.nav"
-                                    style="border:1px solid #39f; line-height: 20px;"> </textarea>
-                                </div>
-                            </Form-item>
+
+                                <textarea name="textarea" rows="10" cols="35" v-model="formValidate.nav" style="border:1px solid #39f; line-height: 20px;">
+                                </textarea>
+                            </div>
+                        </Form-item>
 
                         <!-- TODO: 添加 登录 -->
 
 
 
 
-                        <Form-item label="CSS 预处理：" prop="css">
+                        <Form-item label="CSS preprocessing:" prop="css">
                             <Checkbox-group v-model="formValidate.css">
                                 <Checkbox label="less"></Checkbox>
                                 <Checkbox label="sass"></Checkbox>
@@ -111,55 +111,55 @@
                             </i-switch>
                         </Form-item>
 
-                        <Form-item label="状态管理：" prop="store">
+                        <Form-item label="Status Management:" prop="store">
                             <Checkbox-group v-model="formValidate.store">
                                 <Checkbox label="vuex"></Checkbox>
                                 <Checkbox label="bus.js"></Checkbox>
                             </Checkbox-group>
                         </Form-item>
-                        <Form-item label="图表：" prop="chart">
+                        <Form-item label="Charts " prop="chart">
                             <Checkbox-group v-model="formValidate.chart">
                                 <Checkbox label="echarts"></Checkbox>
                             </Checkbox-group>
                         </Form-item>
-                        <Form-item label="附加功能：" prop="funs">
+                        <Form-item label="Additional features:" prop="funs">
                             <Checkbox-group v-model="formValidate.funs">
                                 <Checkbox label="cookies">Cookie（js-cookie）</Checkbox>
-                                <Checkbox label="clipboard">复制（clipboard）</Checkbox>
-                                <Checkbox label="html2canvas">HTML 转图片（html2canvas）</Checkbox>
-                                <Checkbox label="rasterizehtml">HTML 转图片（rasterizeHTML）</Checkbox>
+                                <Checkbox label="clipboard">Copy（clipboard）</Checkbox>
+                                <Checkbox label="html2canvas">html2canvas</Checkbox>
+                                <Checkbox label="rasterizehtml">rasterizeHTML</Checkbox>
                             </Checkbox-group>
                         </Form-item>
                         <a href="javascript:void(0)" class="create-app-more" v-if="!showMore" @click="handleShowMore">
-                            <span>显示更多配置</span>
+                            <span>Show more configuration</span>
                             <Icon type="ios-arrow-down"></Icon>
                         </a>
                         <div class="create-app-more-item" v-if="showMore">
-                            <Form-item label="项目名称：" prop="name">
-                                <i-input v-model="formValidate.name" placeholder="请输入项目名，必须为英文且不带空格"></i-input>
+                            <Form-item label="Project name" prop="name">
+                                <i-input v-model="formValidate.name" placeholder="Please enter the project name, must be in English with no spaces"></i-input>
                             </Form-item>
-                            <Form-item label="版本号：" prop="version">
-                                <i-input v-model="formValidate.version" placeholder="请输入版本号，例如 1.0.0"></i-input>
+                            <Form-item label="Version" prop="version">
+                                <i-input v-model="formValidate.version" placeholder="Please enter the version number"></i-input>
                             </Form-item>
-                            <Form-item label="项目介绍：" prop="desc">
-                                <i-input type="textarea" v-model="formValidate.desc" placeholder="请输入项目介绍..."></i-input>
+                            <Form-item label="Project description" prop="desc">
+                                <i-input type="textarea" v-model="formValidate.desc" placeholder="Please enter the project description ..."></i-input>
                             </Form-item>
-                            <Form-item label="Git 地址：" prop="git">
-                                <i-input v-model="formValidate.git" placeholder="请输入项目所在仓库地址"></i-input>
+                            <Form-item label="Git" prop="git">
+                                <i-input v-model="formValidate.git" placeholder="Plase enter the git address"></i-input>
                             </Form-item>
                         </div>
                     </i-form>
                     <Row class="create-app-submit">
                         <i-col span="9" offset="2">
-                            <i-button type="primary" long @click="handleSubmit('formValidate')">创建工程</i-button>
+                            <i-button type="primary" long @click="handleSubmit('formValidate')">Create Project</i-button>
                         </i-col>
                         <i-col span="9" offset="2">
-                            <i-button type="ghost" long @click="handleReset('formValidate')" style="margin-left: 8px">重置</i-button>
+                            <i-button type="ghost" long @click="handleReset('formValidate')" style="margin-left: 8px">Reset</i-button>
                         </i-col>
                     </Row>
                 </div>
                 <div class="create-info" v-show="status === 'log'">
-                    <log :status="log.package" content="创建 package.json"></log>
+                    <!-- <log :status="log.package" content="创建 package.json"></log>
                     <log :status="log.babel" content="创建 .babelrc"></log>
                     <log :status="log.builds" content="创建 webpack 配置文件"></log>
 
@@ -174,14 +174,32 @@
                     <log :status="log.main" content="创建入口文件 main.js"></log>
                     <log :status="log.bus" content="创建中央事件总线文件 bus.js" v-if="formValidate.store.indexOf('bus.js') > -1"></log>
                     <log :status="log.gitignore" content="创建 .gitignore"></log>
-                    <log :status="log.editorconfig" content="创建 .editorconfig"></log>
+                    <log :status="log.editorconfig" content="创建 .editorconfig"></log> -->
+
+
+                    <log :status="log.package" content="Create package.json"> </log>
+                    <log :status="log.babel" content="Create .babelrc"> </log>
+                    <log :status="log.builds" content="Create webpack profile"> </log>
+
+                    <log :status="2" content="Create routing profile router.js"> </log>
+                    <log :status="2" content="Create a routing-oriented page file"> </log>
+                    <log :status="log.login" content="Create Login Page"> </log>
+                    <log :status="log.css" content="Initialize Style Files"> </log>
+                    <log :status="log.notFound" content="Create 404 Page"> </log>
+                    <log :status="log.app" content="Create a route mount root component app.vue"> </log>
+                    <log :status="log.indexHtml" content="create mount page index.html"> </log>
+                    <log :status="log.main" content="Create entry file main.js"> </log>
+                    <log :status="log.bus" content="Create a central event bus file bus.js" v-if="formValidate.store.indexOf ('bus.js')> -1">
+                    </log>
+                    <log :status="log.gitignore" content="Create .gitignore"> </log>
+                    <log :status="log.editorconfig" content="Create .editorconfig"> </log>
 
                     <Row class="create-app-submit create-info-submit">
                         <i-col span="9" offset="2">
-                            <i-button type="success" long @click="handleNext" icon="ios-information">进一步配置</i-button>
+                            <i-button type="success" long @click="handleNext" icon="ios-information">Further configuration</i-button>
                         </i-col>
                         <i-col span="9" offset="2">
-                            <i-button type="ghost" long @click="handleOpenDirectory" style="margin-left: 8px" icon="folder">打开目录</i-button>
+                            <i-button type="ghost" long @click="handleOpenDirectory" style="margin-left: 8px" icon="folder">Open directory</i-button>
                         </i-col>
                     </Row>
                 </div>
@@ -189,41 +207,41 @@
                     <Alert show-icon>
                         <Icon type="ios-lightbulb-outline" slot="icon"></Icon>
                         <span slot="desc">
-                            iBiu已将所有配置文件保存在指定的
-                            <a href="javascript:void(0)" @click="handleOpenDirectory">目录</a>，按照下面的流程可以启动项目。
+                            iBiu has all the configuration files saved in the specified
+                            <a href="javascript:void(0)" @click="handleOpenDirectory">directory</a>, follow the procedure below to start the project.
                         </span>
                     </Alert>
-                    <Alert>请预先全局安装 Node.js、npm 、webpack。</Alert>
-                    <h4>安装依赖</h4>
+                    <Alert> Please pre-install Node.js, npm, webpack globally. </Alert>
+                    <h4>Installation Dependencies </h4>
                     <code>$ npm install</code>
-                    <h4>启动服务（开发环境）</h4>
+                    <h4>Start Services (Development Environment) </h4>
                     <code>$ npm run dev</code>
                     <p>
-                        服务启动后，打开
+                       After the service starts, open
                         <a href="javascript:void(0)" @click="handleOpenLink('http://localhost:8080')">http://localhost:8080</a> 访问网站
                     </p>
                     <p></p>
-                    <h4>编译打包（生产环境）</h4>
+                    <h4>Compile and Package (Production Environment)</h4>
                     <code>$ npm run build</code>
                     <template v-if="formValidate.ajax">
-                        <h4>配置 路由</h4>
-                        <p>iBiu已经根据你的json给你配置好了路由，位置就在
-                            <a href="javascript:void(0)" @click="handleOpenFile('src/router/index.js')">views/src/router</a> 里，点击文件修改具体配置。</p>
+                        <h4>Configure Routing</h4>
+                        <p>iBiu has configured the routes for you based on your json, right there
+                            <a href="javascript:void(0)" @click="handleOpenFile('src/router/index.js')">views/src/router</a> click on the file to modify the specific configuration.</p>
                     </template>
-                    <h4>自定义页面</h4>
-                    <p>iBiu根据你的配置文件,生成了相关目录以及相关页面,并将路由指向了它们
-                        <a href="javascript:void(0)" @click="handleOpenFile('src/views/index.vue')">点击查看 </a> 文件</p>
+                    <h4>Custom Page</h4>
+                    <p>Based on your configuration file, iBiu generates the relevant directories and associated pages and points the route to them
+                        <a href="javascript:void(0)" @click="handleOpenFile('src/views/index.vue')">Click to view </a> Files</p>
                     <template v-if="formValidate.eslint">
                         <h4>ESLint</h4>
-                        <p>使用 ESLint 来检测代码是否符合规范：</p>
+                        <p>Use ESLint to detect code compliance:</p>
                         <code>$ npm run lint</code>
                     </template>
                     <Row class="create-app-submit create-info-submit">
                         <i-col span="9" offset="2">
-                            <i-button type="primary" long @click="handleBackHome" icon="ios-home">返回首页</i-button>
+                            <i-button type="primary" long @click="handleBackHome" icon="ios-home">Back</i-button>
                         </i-col>
                         <i-col span="9" offset="2">
-                            <i-button type="ghost" long @click="handleOpenDirectory" style="margin-left: 8px" icon="folder">打开目录</i-button>
+                            <i-button type="ghost" long @click="handleOpenDirectory" style="margin-left: 8px" icon="folder">Open Directory</i-button>
                         </i-col>
                     </Row>
                 </div>
