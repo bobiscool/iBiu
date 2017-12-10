@@ -5,8 +5,8 @@
 
 [中文文档看这里](/docs/cn.md)
 
-#### [Windows x64](https://link.juejin.im/?target=https%3A%2F%2Fgit.oschina.net%2Fkarl-vicent%2FiBiu%2Fraw%2Fmaster%2Fwin%2FiBiu%2520Setup%25201.0.0.exe)
-#### [MAC](https://link.juejin.im/?target=https%3A%2F%2Fgit.oschina.net%2Fkarl-vicent%2FiBiu%2Fraw%2Fmaster%2Fmacos%2FiBiu-1.0.0.dmg)
+#### [Windows x64](https://raw.githubusercontent.com/bobiscool/iBiu/47afe96d580ab61736b0cd5d09c8e3f7f7c5c209/dist/iBiu%20Setup%201.0.0.exe)
+#### [MAC](https://raw.githubusercontent.com/bobiscool/iBiu/47afe96d580ab61736b0cd5d09c8e3f7f7c5c209/dist/iBiu-1.0.0-mac.zip)
 
 
 > iBiu  was developed based on [iView-cli](https://github.com/iview/iview-cli) 
