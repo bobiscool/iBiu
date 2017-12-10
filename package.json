@@ -37,7 +37,7 @@
     "vue": "^2.2.6"
   },
   "devDependencies": {
-    "electron-builder": "^19.16.1",
+    "electron-builder": "^19.48.3",
     "electron-packager": "^8.7.0",
     "electron-prebuilt": "^1.4.13"
   },
@@ -49,6 +49,5 @@
     "mac": {
       "category": "dsfdsf"
     }
-
   }
 }
