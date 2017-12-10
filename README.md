@@ -3,7 +3,7 @@
 ### One-stop Vue scaffolding tool
 ![](./assets/img/ibiuFor.png)
 
-[中文](/docs/cn.md)
+[中文文档看这里](/docs/cn.md)
 
 #### [Windows x64](https://link.juejin.im/?target=https%3A%2F%2Fgit.oschina.net%2Fkarl-vicent%2FiBiu%2Fraw%2Fmaster%2Fwin%2FiBiu%2520Setup%25201.0.0.exe)
 #### [MAC](https://link.juejin.im/?target=https%3A%2F%2Fgit.oschina.net%2Fkarl-vicent%2FiBiu%2Fraw%2Fmaster%2Fmacos%2FiBiu-1.0.0.dmg)
@@ -36,13 +36,14 @@ base on
 ### Instructions
 
 1. Click New Project<br>
-   ![](./assets/github/2017-07-21_11-20-39.png)
+   ![](./assets/github/iBiu1.png)
 2. Select the library you want to configure  
 3. Paste you need to create the directory JSON [format please refer to this format](https://github.com/bobiscool/iBiu/blob/master/assets/github/formater.json)<br>
-   ![](./assets/github/2017-07-21_11-23-54.png)
+   ![](./assets/github/iBiu2.png)
 4. Click Create Project
+    ![](./assets/github/iBiu3.png)
 5. Open the directory after creation<br>
-   ![](./assets/github/2017-07-21_11-26-29.png)<br>
+   ![](./assets/github/iBiu4.png)<br>
    ![](./assets/github/games_js_和_src.png)
    - Run `npm install`
    - Run `npm run dev`
