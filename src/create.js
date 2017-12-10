@@ -387,14 +387,13 @@ const app = new Vue({
             this.$refs[name].validate((valid) => {
                 if (valid) {
                     saveDirectory = dialog.showOpenDialog(win, {
-                        title: '选择工程保存目录',
+                        title: 'Please select where to save the project',
                         properties: ['openDirectory', 'createDirectory']
                     });
 
                     if (saveDirectory) {
                         saveDirectory = saveDirectory[0];
                         this.status = 'log';
-
                         // package.json
                         createPackage({
                             data: this.formValidate,
