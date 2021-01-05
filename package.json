@@ -31,7 +31,7 @@
     "url": "https://github.com/bobiscool/iBiu/issues"
   },
   "dependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.21.1",
     "iview": "^2.0.0-rc.13",
     "js-beautify": "^1.6.9",
     "vue": "^2.2.6"
